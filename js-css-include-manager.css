@@ -1,0 +1,19 @@
+form#js_css_include_manager_form table td ul li {
+	margin-bottom: 20px;
+}
+form#js_css_include_manager_form table td ul li label {
+	display: block;
+}
+
+form#js_css_include_manager_form div#update table th.use {
+	width: 11%;
+}
+form#js_css_include_manager_form div#update table th.filetype {
+	width: 23%;
+}
+form#js_css_include_manager_form div#update table th.output {
+	width: 12%;
+}
+form#js_css_include_manager_form div#update table th.operation {
+	width: 11%;
+}
