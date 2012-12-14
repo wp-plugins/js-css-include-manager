@@ -3,7 +3,7 @@ Contributors: gqevu6bsiz
 Donate link: 
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.3.2
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: 1.0.0
 License: GPL2
 
