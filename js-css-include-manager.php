@@ -2,10 +2,10 @@
 /*
 Plugin Name: Js Css Include Manager
 Description: Javascript file and Css file for include will manage.
-Plugin URI: http://gqevu6bsiz.chicappa.jp
-Version: 1.0.0
+Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
+Version: 1.1
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/author/admin/
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jsim&utm_campaign=1_1
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,7 +28,7 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.0.0');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.1');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
@@ -48,12 +48,27 @@ function js_css_include_manager_add_menu() {
 // plugin setup
 function js_css_include_manager_plugin_setting($links, $file) {
 	if(plugin_basename(__FILE__) == $file) {
+		$support_link = '<a href="http://wordpress.org/support/plugin/js-css-include-manager" target="_blank">' . __( 'Support Forums' ) . '</a>';
 		$settings_link = '<a href="'.JS_CSS_INCLUDE_MANAGER_MANAGE_URL.'">'.__('Settings').'</a>'; 
-		array_unshift( $links, $settings_link );
+		array_unshift( $links, $support_link , $settings_link );
 	}
 	return $links;
 }
 add_action('admin_menu', 'js_css_include_manager_add_menu');
+
+
+
+
+
+// footer text
+function js_css_include_manager_admin_footer_text( $text ) {
+		
+	$text = '<img src="' . JS_CSS_INCLUDE_MANAGER_PLUGIN_DIR . 'images/gqevu6bsiz.png" width="18" /> Plugin developer : <a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=footer&utm_content=jcim&utm_campaign=1_1" target="_blank">gqevu6bsiz</a>';
+		
+	return $text;
+}
+add_filter( 'admin_footer_text' ,'js_css_include_manager_admin_footer_text' );
+
 
 
 
@@ -137,203 +152,272 @@ function js_css_include_manager_setting() {
 	<?php echo $Msg; ?>
 	<p>&nbsp;</p>
 
-	<form id="js_css_include_manager_form" method="post" action="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>">
-		<input type="hidden" name="<?php echo $UPFN; ?>" value="Y">
-		<?php wp_nonce_field(-1, '_wpnonce', false); ?>
+	<div class="metabox-holder columns-2">
 
-		<?php $type = 'create'; ?>
-		<div id="<?php echo $type; ?>">
-			<h3><?php _e('Setting an include file.', 'js_css_include_manager'); ?></h3>
-			<table class="form-table">
-				<tbody>
-					<tr>
-						<th><label for="<?php echo $type; ?>_use"><?php _e('Use', 'js_css_include_manager'); ?></label> *</th>
-						<td>
-							<select name="<?php echo $type; ?>[use]" id="<?php echo $type; ?>_use">
-								<?php foreach($Use as $key => $val) : ?>
-									<?php if(!empty($val)) : ?>
-										<option value="<?php echo $key; ?>"><?php echo _e($val, 'js_css_include_manager'); ?></option>
-									<?php endif; ?>
-								<?php endforeach; ?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th><label for="<?php echo $type; ?>_filetype"><?php _e('File Type', 'js_css_include_manager'); ?></label> *</th>
-						<td>
-							<select name="<?php echo $type; ?>[filetype]" id="<?php echo $type; ?>_filetype">
-								<?php foreach($Filetype as $key => $val) : ?>
-									<?php if(!empty($val)) : ?>
-										<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-									<?php endif; ?>
-								<?php endforeach; ?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th><label for="<?php echo $type; ?>_output"><?php _e('Output', 'js_css_include_manager'); ?></label> *</th>
-						<td>
-							<select name="<?php echo $type; ?>[output]" id="<?php echo $type; ?>_output">
-								<?php foreach($Output as $key => $val) : ?>
-									<?php if(!empty($val)) : ?>
-										<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-									<?php endif; ?>
-								<?php endforeach; ?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<th><label for="<?php echo $type; ?>_location"><?php _e('Location', 'js_css_include_manager'); ?></label> *</th>
-						<td>
-							<ul>
-								<?php foreach($Location as $key => $val) : ?>
-									<?php if(!empty($val["name"])) : ?>
-										<li>
-											<label><input type="radio" name="<?php echo $type; ?>[location][num]" value="<?php echo $key; ?>" /><?php echo _e($val["name"], 'js_css_include_manager'); ?></label>
-											<?php if(!empty($val["location"])) : ?>
-												<code><?php echo $val["location"]; ?></code>
-												<input type="text" name="<?php echo $type; ?>[location][name][<?php echo $key; ?>]" class="regular-text disabled" disabled="disabled" />
-											<?php else: ?>
-												<code>http://sample.com/sample.css or http://sample.com/sample.js</code>
-												<input type="text" name="<?php echo $type; ?>[location][name][<?php echo $key; ?>]" class="large-text disabled" disabled="disabled" />
-											<?php endif; ?>
-										</li>
-									<?php endif; ?>
-								<?php endforeach; ?>
-							</ul>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<p class="submit">
-				<input type="button" class="button-primary" value="<?php _e('Save'); ?>" />
-			</p>
-		</div>
+		<div class="postbox-container" id="postbox-container-1">
 
-
-		<?php $type = 'update'; ?>
-		<div id="<?php echo $type; ?>">
-			<h3><?php _e('Include setting that you created.', 'js_css_include_manager'); ?></h3>
-			<?php if(!empty($Data)) : ?>
-
-				<table cellspacing="0" class="widefat fixed">
-					<thead>
-						<tr>
-							<th class="use"><?php _e('Use', 'js_css_include_manager'); ?></th>
-							<th class="filetype"><?php _e('File Type', 'js_css_include_manager'); ?></th>
-							<th class="output"><?php _e('Output', 'js_css_include_manager'); ?></th>
-							<th class="location"><?php _e('Location', 'js_css_include_manager'); ?></th>
-							<th class="operation">&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach($Data as $key => $val) : ?>
+			<form id="js_css_include_manager_form" method="post" action="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>">
+				<input type="hidden" name="<?php echo $UPFN; ?>" value="Y">
+				<?php wp_nonce_field(-1, '_wpnonce', false); ?>
+		
+				<?php $type = 'create'; ?>
+				<div id="<?php echo $type; ?>">
+					<h3><?php _e('Setting an include file.', 'js_css_include_manager'); ?></h3>
+					<table class="form-table">
+						<tbody>
 							<tr>
-								<td class="use">
-									<select name="<?php echo $type; ?>[<?php echo $key; ?>][use]">
-										<?php foreach($Use as $usenum => $usetype) : ?>
-											<?php $Selected = ''; ?>
-											<?php if(!empty($usetype)) : ?>
-												<?php if($usenum == strip_tags($val["use"])) : ?>
-													<?php $Selected = 'selected="selected"'; ?>
-												<?php endif; ?>
-												<option value="<?php echo $usenum; ?>" <?php echo $Selected; ?>><?php echo _e($usetype, 'js_css_include_manager'); ?></option>
+								<th><label for="<?php echo $type; ?>_use"><?php _e('Use', 'js_css_include_manager'); ?></label> *</th>
+								<td>
+									<select name="<?php echo $type; ?>[use]" id="<?php echo $type; ?>_use">
+										<?php foreach($Use as $key => $val) : ?>
+											<?php if(!empty($val)) : ?>
+												<option value="<?php echo $key; ?>"><?php echo _e($val, 'js_css_include_manager'); ?></option>
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</select>
-									<span><?php echo _e($Use[strip_tags($val["use"])], 'js_css_include_manager'); ?></span>
 								</td>
-								<td class="filetype">
-									<select name="<?php echo $type; ?>[<?php echo $key; ?>][filetype]">
-										<?php foreach($Filetype as $filenum => $filetype) : ?>
-											<?php $Selected = ''; ?>
-											<?php if(!empty($filetype)) : ?>
-												<?php if($filenum == strip_tags($val["filetype"])) : ?>
-													<?php $Selected = 'selected="selected"'; ?>
-												<?php endif; ?>
-												<option value="<?php echo $filenum; ?>" <?php echo $Selected; ?>><?php echo $filetype; ?></option>
+							</tr>
+							<tr>
+								<th><label for="<?php echo $type; ?>_filetype"><?php _e('File Type', 'js_css_include_manager'); ?></label> *</th>
+								<td>
+									<select name="<?php echo $type; ?>[filetype]" id="<?php echo $type; ?>_filetype">
+										<?php foreach($Filetype as $key => $val) : ?>
+											<?php if(!empty($val)) : ?>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</select>
-									<span><?php echo $Filetype[strip_tags($val["filetype"])]; ?></span>
 								</td>
-								<td class="output">
-									<select name="<?php echo $type; ?>[<?php echo $key; ?>][output]">
-										<?php foreach($Output as $outputnum => $outputtype) : ?>
-											<?php $Selected = ''; ?>
-											<?php if(!empty($outputtype)) : ?>
-												<?php if($outputnum == strip_tags($val["output"])) : ?>
-													<?php $Selected = 'selected="selected"'; ?>
-												<?php endif; ?>
-												<option value="<?php echo $outputnum; ?>" <?php echo $Selected; ?>><?php echo $outputtype; ?></option>
+							</tr>
+							<tr>
+								<th><label for="<?php echo $type; ?>_output"><?php _e('Output', 'js_css_include_manager'); ?></label> *</th>
+								<td>
+									<select name="<?php echo $type; ?>[output]" id="<?php echo $type; ?>_output">
+										<?php foreach($Output as $key => $val) : ?>
+											<?php if(!empty($val)) : ?>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</select>
-									<span><?php echo $Output[strip_tags($val["output"])]; ?></span>
 								</td>
-								<td class="location">
+							</tr>
+							<tr>
+								<th><label for="<?php echo $type; ?>_location"><?php _e('Location', 'js_css_include_manager'); ?></label> *</th>
+								<td>
 									<ul>
-										<?php foreach($Location as $location_num => $location_val) : ?>
-											<?php $Checked = ""; ?>
-											<?php $ClassDis = 'disabled'; ?>
-											<?php $Disabled = 'disabled="disabled"'; ?>
-											<?php $Value = ''; ?>
-											<?php if(!empty($location_val["name"])) : ?>
-												<?php if($val["location"]["num"] == $location_num) : ?>
-													<?php $Checked = 'checked="checked"'; ?>
-													<?php $ClassDis = ''; ?>
-													<?php $Disabled = ''; ?>
-													<?php $Value = strip_tags($val["location"]["name"]); ?>
-												<?php endif; ?>
+										<?php foreach($Location as $key => $val) : ?>
+											<?php if(!empty($val["name"])) : ?>
 												<li>
-													<label><input type="radio" name="<?php echo $type; ?>[<?php echo $key; ?>][location][num]" value="<?php echo $location_num; ?>" <?php echo $Checked; ?> /><?php echo $location_val["name"]; ?></label>
-													<?php if(!empty($location_val["location"])) : ?>
-														<code><?php echo $location_val["location"]; ?></code>
+													<label><input type="radio" name="<?php echo $type; ?>[location][num]" value="<?php echo $key; ?>" /><?php echo _e($val["name"], 'js_css_include_manager'); ?></label>
+													<?php if(!empty($val["location"])) : ?>
+														<code><?php echo $val["location"]; ?></code>
+														<input type="text" name="<?php echo $type; ?>[location][name][<?php echo $key; ?>]" class="regular-text disabled" disabled="disabled" />
 													<?php else: ?>
 														<code>http://sample.com/sample.css or http://sample.com/sample.js</code>
+														<input type="text" name="<?php echo $type; ?>[location][name][<?php echo $key; ?>]" class="large-text disabled" disabled="disabled" />
 													<?php endif; ?>
-													<input type="text" name="<?php echo $type; ?>[<?php echo $key; ?>][location][name]" class="large-text <?php echo $ClassDis; ?>" <?php echo $Disabled; ?> value="<?php echo $Value; ?>" />
 												</li>
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</ul>
-
-									<span>
-										<?php $FileUrl = $Location[strip_tags($val["location"]["num"])]["location"].strip_tags($val["location"]["name"]); ?>
-										<a href="<?php echo $FileUrl; ?>" target="_blank"><?php echo esc_html($FileUrl); ?></a>
-										<?php if(!empty($FileUrl)) : ?>
-											<?php $Gh = @get_headers($FileUrl); ?>
-											<?php if(empty($Gh[0])) : ?>
-												<br /><code>No Header</code>
-											<?php elseif(!preg_match('#^HTTP/.*\s+[200|302]+\s#i', $Gh[0])) : ?>
-												<br /><code><?php echo $Gh[0]; ?></code>
-											<?php endif; ?>
-										<?php endif; ?>
-									</span>
-								</td>
-								<td class="operation">
-									<span>
-										<a class="edit" href="javascript:void(0)"><?php _e('Edit'); ?></a>
-										&nbsp;|&nbsp;
-										<a class="delete" href="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>&delete=<?php echo $key; ?>"><?php _e('Delete'); ?></a>
-									</span>
-									<p class="submit">
-										<input type="button" class="button-primary" value="<?php _e('Save'); ?>" />
-									</p>
 								</td>
 							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
+						</tbody>
+					</table>
+					<p class="submit">
+						<input type="button" class="button-primary" value="<?php _e('Save'); ?>" />
+					</p>
+				</div>
+		
+		
+				<?php $type = 'update'; ?>
+				<div id="<?php echo $type; ?>">
+					<h3><?php _e('Include setting that you created.', 'js_css_include_manager'); ?></h3>
+					<?php if(!empty($Data)) : ?>
+		
+						<table cellspacing="0" class="widefat fixed">
+							<thead>
+								<tr>
+									<th class="use"><?php _e('Use', 'js_css_include_manager'); ?></th>
+									<th class="filetype"><?php _e('File Type', 'js_css_include_manager'); ?></th>
+									<th class="output"><?php _e('Output', 'js_css_include_manager'); ?></th>
+									<th class="location"><?php _e('Location', 'js_css_include_manager'); ?></th>
+									<th class="operation">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach($Data as $key => $val) : ?>
+									<tr>
+										<td class="use">
+											<select name="<?php echo $type; ?>[<?php echo $key; ?>][use]">
+												<?php foreach($Use as $usenum => $usetype) : ?>
+													<?php $Selected = ''; ?>
+													<?php if(!empty($usetype)) : ?>
+														<?php if($usenum == strip_tags($val["use"])) : ?>
+															<?php $Selected = 'selected="selected"'; ?>
+														<?php endif; ?>
+														<option value="<?php echo $usenum; ?>" <?php echo $Selected; ?>><?php echo _e($usetype, 'js_css_include_manager'); ?></option>
+													<?php endif; ?>
+												<?php endforeach; ?>
+											</select>
+											<span><?php echo _e($Use[strip_tags($val["use"])], 'js_css_include_manager'); ?></span>
+										</td>
+										<td class="filetype">
+											<select name="<?php echo $type; ?>[<?php echo $key; ?>][filetype]">
+												<?php foreach($Filetype as $filenum => $filetype) : ?>
+													<?php $Selected = ''; ?>
+													<?php if(!empty($filetype)) : ?>
+														<?php if($filenum == strip_tags($val["filetype"])) : ?>
+															<?php $Selected = 'selected="selected"'; ?>
+														<?php endif; ?>
+														<option value="<?php echo $filenum; ?>" <?php echo $Selected; ?>><?php echo $filetype; ?></option>
+													<?php endif; ?>
+												<?php endforeach; ?>
+											</select>
+											<span><?php echo $Filetype[strip_tags($val["filetype"])]; ?></span>
+										</td>
+										<td class="output">
+											<select name="<?php echo $type; ?>[<?php echo $key; ?>][output]">
+												<?php foreach($Output as $outputnum => $outputtype) : ?>
+													<?php $Selected = ''; ?>
+													<?php if(!empty($outputtype)) : ?>
+														<?php if($outputnum == strip_tags($val["output"])) : ?>
+															<?php $Selected = 'selected="selected"'; ?>
+														<?php endif; ?>
+														<option value="<?php echo $outputnum; ?>" <?php echo $Selected; ?>><?php echo $outputtype; ?></option>
+													<?php endif; ?>
+												<?php endforeach; ?>
+											</select>
+											<span><?php echo $Output[strip_tags($val["output"])]; ?></span>
+										</td>
+										<td class="location">
+											<ul>
+												<?php foreach($Location as $location_num => $location_val) : ?>
+													<?php $Checked = ""; ?>
+													<?php $ClassDis = 'disabled'; ?>
+													<?php $Disabled = 'disabled="disabled"'; ?>
+													<?php $Value = ''; ?>
+													<?php if(!empty($location_val["name"])) : ?>
+														<?php if($val["location"]["num"] == $location_num) : ?>
+															<?php $Checked = 'checked="checked"'; ?>
+															<?php $ClassDis = ''; ?>
+															<?php $Disabled = ''; ?>
+															<?php $Value = strip_tags($val["location"]["name"]); ?>
+														<?php endif; ?>
+														<li>
+															<label><input type="radio" name="<?php echo $type; ?>[<?php echo $key; ?>][location][num]" value="<?php echo $location_num; ?>" <?php echo $Checked; ?> /><?php echo $location_val["name"]; ?></label>
+															<?php if(!empty($location_val["location"])) : ?>
+																<code><?php echo $location_val["location"]; ?></code>
+															<?php else: ?>
+																<code>http://sample.com/sample.css or http://sample.com/sample.js</code>
+															<?php endif; ?>
+															<input type="text" name="<?php echo $type; ?>[<?php echo $key; ?>][location][name]" class="large-text <?php echo $ClassDis; ?>" <?php echo $Disabled; ?> value="<?php echo $Value; ?>" />
+														</li>
+													<?php endif; ?>
+												<?php endforeach; ?>
+											</ul>
+		
+											<span>
+												<?php $FileUrl = $Location[strip_tags($val["location"]["num"])]["location"].strip_tags($val["location"]["name"]); ?>
+												<a href="<?php echo $FileUrl; ?>" target="_blank"><?php echo esc_html($FileUrl); ?></a>
+												<?php if(!empty($FileUrl)) : ?>
+													<?php $Gh = @get_headers($FileUrl); ?>
+													<?php if(empty($Gh[0])) : ?>
+														<br /><code>No Header</code>
+													<?php elseif(!preg_match('#^HTTP/.*\s+[200|302]+\s#i', $Gh[0])) : ?>
+														<br /><code><?php echo $Gh[0]; ?></code>
+													<?php endif; ?>
+												<?php endif; ?>
+											</span>
+										</td>
+										<td class="operation">
+											<span>
+												<a class="edit" href="javascript:void(0)"><?php _e('Edit'); ?></a>
+												&nbsp;|&nbsp;
+												<a class="delete" href="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>&delete=<?php echo $key; ?>"><?php _e('Delete'); ?></a>
+											</span>
+											<p class="submit">
+												<input type="button" class="button-primary" value="<?php _e('Save'); ?>" />
+											</p>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+		
+					<?php else: ?>
+		
+						<p><?php _e('Not created include setting.', 'js_css_include_manager'); ?></p>
+		
+					<?php endif; ?>
+				</div>
+		
+			</form>
 
-			<?php else: ?>
+		</div>
+		
+		<div class="postbox-container" id="postbox-container-2">
+			
+				<div class="stuffbox" id="donationbox">
+					<div class="inside">
+						<p style="color: #FFFFFF; font-size: 20px;"><?php _e( 'Please donation.' , 'js_css_include_manager' ); ?></p>
+						<p style="color: #FFFFFF;"><?php _e( 'You are contented with this plugin?<br />By the laws of Japan, Japan\'s new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation.' , 'js_css_include_manager' ); ?></p>
+						<p>&nbsp;</p>
+						<p style="text-align: center;">
+							<a href="http://gqevu6bsiz.chicappa.jp/line-break-first-and-end/?utm_source=use_plugin&utm_medium=donate&utm_content=jcim&utm_campaign=1_1" class="button-primary" target="_blank">Line Break First and End</a>
+						</p>
+						<p>&nbsp;</p>
+						<div class="donation_memo">
+							<p><strong><?php _e( 'Features' , 'js_css_include_manager' ); ?></strong></p>
+							<p><?php _e( 'Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break.' , 'js_css_include_manager' ); ?></p>
+						</div>
+						<div class="donation_memo">
+							<p><strong><?php _e( 'The primary use of donations' , 'js_css_include_manager' ); ?></strong></p>
+							<ul>
+								<li>- <?php _e( 'Liquidation of time and value' , 'js_css_include_manager' ); ?></li>
+								<li>- <?php _e( 'Additional suggestions feature' , 'js_css_include_manager' ); ?></li>
+								<li>- <?php _e( 'Maintain motivation' , 'js_css_include_manager' ); ?></li>
+								<li>- <?php _e( 'Ensure time as the father of Sunday' , 'js_css_include_manager' ); ?></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 
-				<p><?php _e('Not created include setting.', 'js_css_include_manager'); ?></p>
+				<div class="stuffbox" id="aboutbox">
+					<h3><span class="hndle"><?php _e( 'About plugin' , 'js_css_include_manager' ); ?></span></h3>
+					<div class="inside">
+						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.5.1</p>
+						<ul>
+							<li><a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=1_1" target="_blank"><?php _e( 'Developer\'s site' , 'js_css_include_manager' ); ?></a></li>
+							<li><a href="http://wordpress.org/support/plugin/js-css-include-manager" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>
+							<li><a href="http://wordpress.org/support/view/plugin-reviews/js-css-include-manager" target="_blank"><?php _e( 'Reviews' , 'js_css_include_manager' ); ?></a></li>
+							<li><a href="https://twitter.com/gqevu6bsiz" target="_blank">twitter</a></li>
+							<li><a href="http://www.facebook.com/pages/Gqevu6bsiz/499584376749601" target="_blank">facebook</a></li>
+						</ul>
+					</div>
+				</div>
 
-			<?php endif; ?>
+				<div class="stuffbox" id="usefulbox">
+					<h3><span class="hndle"><?php _e( 'Useful plugins' , 'js_css_include_manager' ); ?></span></h3>
+					<div class="inside">
+						<p><strong><a href="http://wordpress.org/extend/plugins/custom-options-plus-post-in/" target="_blank">Custom Options Plus Post in</a></strong></p>
+						<p class="description"><?php _e( 'The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article.' , 'js_css_include_manager' ); ?></p>
+						<p><strong><a href="http://wordpress.org/extend/plugins/announce-from-the-dashboard/" target="_blank">Announce from the Dashboard</a></strong></p>
+						<p class="description"><?php _e( 'Announce to display the dashboard. Change the display to a different user role.' , 'js_css_include_manager' ); ?></p>
+						<p><strong><a href="http://wordpress.org/extend/plugins/wp-admin-ui-customize/" target="_blank">WP Admin UI Customize</a></strong></p>
+						<p class="description"><?php _e( 'Customize a variety of screen management.' , 'js_css_include_manager' ); ?></p>
+						<p>&nbsp;</p>
+					</div>
+				</div>
+
 		</div>
 
-	</form>
+		
+		<div class="clear"></div>
+
+	</div>
+
+
 </div>
 <?php
 }
@@ -370,21 +454,31 @@ function js_css_include_manager_location() {
 
 
 
+
+
 // include file
 function js_css_include_manager_include($Data = array()) {
-	
+
 	if(!empty($Data)) {
-		foreach($Data as $key => $Val) {
-			if($key == 'js') {
+		foreach($Data as $type => $Val) {
+			if($type == 'js') {
 				if(!empty($Val)) {
-					foreach($Val as $num => $File) {
-						wp_enqueue_script('js_css_include_manager-'.$num, $File, array( 'jquery' ));
+					foreach($Val as $key => $File) {
+						if( !empty( $File ) ) {
+							if( $File["output"] == "1" ) {
+								wp_enqueue_script('js_css_include_manager-'.$File["dn"], $File["file"], array( 'jquery' ));
+							} elseif( $File["output"] == "2" ) {
+								wp_enqueue_script('js_css_include_manager-'.$File["dn"], $File["file"], array( 'jquery' ) , false , true );
+							}
+						}
 					}
 				}
-			} else if($key == 'css') {
+			} else if($type == 'css') {
 				if(!empty($Val)) {
-					foreach($Val as $num => $File) {
-						wp_enqueue_style('js_css_include_manager-'.$num, $File);
+					foreach($Val as $key => $File) {
+						if( !empty( $File ) ) {
+							wp_enqueue_style('js_css_include_manager-'.$File["dn"], $File["file"]);
+						}
 					}
 				}
 			}
@@ -395,7 +489,7 @@ function js_css_include_manager_include($Data = array()) {
 
 
 // data filter
-function js_css_include_manager_include_filter($Setting) {
+function js_css_include_manager_include_filter( $Setting ) {
 	$Location = js_css_include_manager_location();
 	$Data = get_option(JS_CSS_INCLUDE_MANAGER_RECORD_NAME);
 
@@ -408,10 +502,12 @@ function js_css_include_manager_include_filter($Setting) {
 			if(!empty($Val["use"]) && !empty($Val["filetype"]) && !empty($Val["output"]) && !empty($Val["location"])) {
 				if($Val["use"] == $Setting["use"] && $Val["output"] == $Setting["output"]) {
 					$File = strip_tags($Location[$Val["location"]["num"]]["location"].strip_tags($Val["location"]["name"]));
+					$Val["file"] = $File;
+					$Val["dn"] = $key;
 					if($Val["filetype"] == 1) {
-						$DataFilt['js'][] = $File;
+						$DataFilt['js'][] = $Val;
 					} else if($Val["filetype"] == 2) {
-						$DataFilt['css'][] = $File;
+						$DataFilt['css'][] = $Val;
 					}
 				}
 			}
@@ -472,5 +568,6 @@ function js_css_include_manager_normal_foot() {
 	}
 }
 add_action('get_footer', 'js_css_include_manager_normal_foot');
+
 
 ?>

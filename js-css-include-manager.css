@@ -1,3 +1,31 @@
+.columns-2 {
+	margin-right: 300px;
+}
+.postbox-container#postbox-container-1 {
+	float: left;
+	width: 100%;
+}
+.postbox-container#postbox-container-2 {
+	float: right;
+	width: 280px;
+	margin-right: -300px;
+}
+
+
+
+.postbox-container #donationbox {
+	background: #87BCE4;
+	border: 3px solid #227499;
+}
+.postbox-container #donationbox .inside {
+	padding: 6px 10px 10px 10px;
+}
+.postbox-container #donationbox .inside .donation_memo {
+	background: #FFF8D9;
+	padding: 2px 10px;
+}
+
+
 form#js_css_include_manager_form table td ul li {
 	margin-bottom: 20px;
 }

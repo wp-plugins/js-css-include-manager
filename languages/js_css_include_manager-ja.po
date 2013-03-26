@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-03-26 13:17+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Last-Translator: \n"
+
+msgid "Javascript file and Css file for include will manage."
+msgstr "javascriptファイルとcssファイルの管理をします。"
+
+msgid "Js Css Include Manager"
+msgstr "Js Css 管理"
+
+msgid "Js Css Include Manager's Setting"
+msgstr "Js Css 設定管理"
+
+msgid "Setting an include file."
+msgstr "読み込みファイルを設定します。"
+
+msgid "Use"
+msgstr "使用箇所"
+
+msgid "File Type"
+msgstr "ファイル形式"
+
+msgid "Output"
+msgstr "出力箇所"
+
+msgid "admin"
+msgstr "管理画面"
+
+msgid "normal"
+msgstr "通常サイト"
+
+msgid "Location"
+msgstr "読み込み先"
+
+msgid "This Plugin Directory"
+msgstr "このプラグインディレクトリ"
+
+msgid "Other Plugin Directory"
+msgstr "他のプラグインディレクトリ"
+
+msgid "This Active Theme's Directory"
+msgstr "現在使用しているテーマディレクトリ"
+
+msgid "Other themes Directory"
+msgstr "他のテーマディレクトリ"
+
+msgid "External file"
+msgstr "外部ファイル"
+
+msgid "Include setting that you created."
+msgstr "作成した読み込み設定"
+
+msgid "Not created include setting."
+msgstr "作成された読み込み設定はありません。"
+
+msgid "Please donation."
+msgstr "寄付のお願い"
+
+msgid "You are contented with this plugin?<br />By the laws of Japan, Japan's new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation."
+msgstr "このプラグインを使って満足できましたか？<br />日本の法律では、日本の新PayPalユーザーは寄付ボタンを作成することはできません。<br />なので寄付の代わりとしてこのプラグインを購入して欲しいです。"
+
+msgid "Features"
+msgstr "機能について"
+
+msgid "Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break."
+msgstr "Line Break First and Endプラグインは、TinyMCEのビジュアルエディタで、改行を入力することが出来なくなった時に便利なプラグインです。"
+
+msgid "The primary use of donations"
+msgstr "寄付の主な使用目的"
+
+msgid "Liquidation of time and value"
+msgstr "時間と価値の清算"
+
+msgid "Additional suggestions feature"
+msgstr "機能提案の追加"
+
+msgid "Maintain motivation"
+msgstr "モチベーション維持"
+
+msgid "Ensure time as the father of Sunday"
+msgstr "日曜日の父親としての時間確保"
+
+msgid "About plugin"
+msgstr "プラグインについて"
+
+msgid "Version check"
+msgstr "動作確認済み"
+
+msgid "Developer's site"
+msgstr "開発者のサイト"
+
+msgid "Reviews"
+msgstr "レビュー"
+
+msgid "Useful plugins"
+msgstr "便利なプラグイン"
+
+msgid "The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article."
+msgstr "オプション値作成プラグインです。作成したオプション値は、ショートコードとして記事に、テンプレートタグとしても使用できます。"
+
+msgid "Announce to display the dashboard. Change the display to a different user role."
+msgstr "ダッシュボードにお知らせを表示します。ユーザーの権限ごとに表示を変更できます。"
+
+msgid "Customize a variety of screen management."
+msgstr "管理画面の様々なカスタマイズ"
+
+msgid "Import and Export"
+msgstr "インポートとエクスポート"
+

@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: 
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_1
 Tags: js, javascript, css, include, manage, admin, front, site
-Requires at least: 3.3.2
-Tested up to: 3.5
-Stable tag: 1.0.0
+Requires at least: 3.4.2
+Tested up to: 3.5.1
+Stable tag: 1.1
 License: GPL2
 
 Javascript file and Css file for include will manage.
@@ -34,6 +34,10 @@ You can choose to apply wp_header or  wp_footer.
 2. Configuration Example
 
 == Changelog ==
+
+= 1.1 =
+Change Layout.
+Fixed a bug that does not appear in the footer.
 
 = 1.0 =
 This is the initial release.
