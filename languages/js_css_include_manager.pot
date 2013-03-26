@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-03-26 13:17+0900\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Last-Translator: \n"
+
+msgid "Javascript file and Css file for include will manage."
+msgstr ""
+
+msgid "Js Css Include Manager"
+msgstr ""
+
+msgid "Js Css Include Manager's Setting"
+msgstr ""
+
+msgid "Setting an include file."
+msgstr ""
+
+msgid "Use"
+msgstr ""
+
+msgid "File Type"
+msgstr ""
+
+msgid "Output"
+msgstr ""
+
+msgid "admin"
+msgstr ""
+
+msgid "normal"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "This Plugin Directory"
+msgstr ""
+
+msgid "Other Plugin Directory"
+msgstr ""
+
+msgid "This Active Theme's Directory"
+msgstr ""
+
+msgid "Other themes Directory"
+msgstr ""
+
+msgid "External file"
+msgstr ""
+
+msgid "Include setting that you created."
+msgstr ""
+
+msgid "Not created include setting."
+msgstr ""
+
+msgid "Please donation."
+msgstr ""
+
+msgid "You are contented with this plugin?<br />By the laws of Japan, Japan's new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation."
+msgstr ""
+
+msgid "Features"
+msgstr ""
+
+msgid "Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break."
+msgstr ""
+
+msgid "The primary use of donations"
+msgstr ""
+
+msgid "Liquidation of time and value"
+msgstr ""
+
+msgid "Additional suggestions feature"
+msgstr ""
+
+msgid "Maintain motivation"
+msgstr ""
+
+msgid "Ensure time as the father of Sunday"
+msgstr ""
+
+msgid "About plugin"
+msgstr ""
+
+msgid "Version check"
+msgstr ""
+
+msgid "Developer's site"
+msgstr ""
+
+msgid "Reviews"
+msgstr ""
+
+msgid "Useful plugins"
+msgstr ""
+
+msgid "The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article."
+msgstr ""
+
+msgid "Announce to display the dashboard. Change the display to a different user role."
+msgstr ""
+
+msgid "Customize a variety of screen management."
+msgstr ""
+
+msgid "Import and Export"
+msgstr ""
+
