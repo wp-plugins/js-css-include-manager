@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_1
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_2
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.4.2
 Tested up to: 3.5.1
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPL2
 
 Javascript file and Css file for include will manage.
@@ -34,6 +34,9 @@ You can choose to apply wp_header or  wp_footer.
 2. Configuration Example
 
 == Changelog ==
+
+= 1.2 =
+Change the notation of the donation.
 
 = 1.1 =
 Change Layout.

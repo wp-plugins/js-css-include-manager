@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-03-26 13:17+0900\n"
+"PO-Revision-Date: 2013-05-11 15:20+0900\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -11,12 +11,9 @@ msgstr ""
 "X-Poedit-Language: Japanese\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Last-Translator: \n"
+"Last-Translator: Gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 
-msgid "Javascript file and Css file for include will manage."
-msgstr ""
-
-msgid "Js Css Include Manager"
+msgid "Javascript file and Css file for include manage."
 msgstr ""
 
 msgid "Js Css Include Manager's Setting"
@@ -64,31 +61,7 @@ msgstr ""
 msgid "Not created include setting."
 msgstr ""
 
-msgid "Please donation."
-msgstr ""
-
-msgid "You are contented with this plugin?<br />By the laws of Japan, Japan's new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation."
-msgstr ""
-
-msgid "Features"
-msgstr ""
-
-msgid "Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break."
-msgstr ""
-
-msgid "The primary use of donations"
-msgstr ""
-
-msgid "Liquidation of time and value"
-msgstr ""
-
-msgid "Additional suggestions feature"
-msgstr ""
-
-msgid "Maintain motivation"
-msgstr ""
-
-msgid "Ensure time as the father of Sunday"
+msgid "Please donation"
 msgstr ""
 
 msgid "About plugin"
@@ -114,7 +87,3 @@ msgstr ""
 
 msgid "Customize a variety of screen management."
 msgstr ""
-
-msgid "Import and Export"
-msgstr ""
-

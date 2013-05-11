@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Js Css Include Manager
-Description: Javascript file and Css file for include will manage.
+Description: Javascript file and Css file for include manage.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.1
+Version: 1.2
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jsim&utm_campaign=1_1
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jsim&utm_campaign=1_2
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,7 +28,7 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.1');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.2');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
@@ -63,7 +63,7 @@ add_action('admin_menu', 'js_css_include_manager_add_menu');
 // footer text
 function js_css_include_manager_admin_footer_text( $text ) {
 		
-	$text = '<img src="' . JS_CSS_INCLUDE_MANAGER_PLUGIN_DIR . 'images/gqevu6bsiz.png" width="18" /> Plugin developer : <a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=footer&utm_content=jcim&utm_campaign=1_1" target="_blank">gqevu6bsiz</a>';
+	$text = '<img src="http://www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=18" width="18" /> Plugin developer : <a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=footer&utm_content=jcim&utm_campaign=' . str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ) . '" target="_blank">gqevu6bsiz</a>';
 		
 	return $text;
 }
@@ -150,7 +150,7 @@ function js_css_include_manager_setting() {
 	<div class="icon32" id="icon-options-general"></div>
 	<h2><?php _e('Js Css Include Manager\'s Setting', 'js_css_include_manager'); ?></h2>
 	<?php echo $Msg; ?>
-	<p>&nbsp;</p>
+	<p><a href="http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>"><?php _e( 'Please donation' , 'js_css_include_manager' ); ?></a></p>
 
 	<div class="metabox-holder columns-2">
 
@@ -358,37 +358,12 @@ function js_css_include_manager_setting() {
 		
 		<div class="postbox-container" id="postbox-container-2">
 			
-				<div class="stuffbox" id="donationbox">
-					<div class="inside">
-						<p style="color: #FFFFFF; font-size: 20px;"><?php _e( 'Please donation.' , 'js_css_include_manager' ); ?></p>
-						<p style="color: #FFFFFF;"><?php _e( 'You are contented with this plugin?<br />By the laws of Japan, Japan\'s new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation.' , 'js_css_include_manager' ); ?></p>
-						<p>&nbsp;</p>
-						<p style="text-align: center;">
-							<a href="http://gqevu6bsiz.chicappa.jp/line-break-first-and-end/?utm_source=use_plugin&utm_medium=donate&utm_content=jcim&utm_campaign=1_1" class="button-primary" target="_blank">Line Break First and End</a>
-						</p>
-						<p>&nbsp;</p>
-						<div class="donation_memo">
-							<p><strong><?php _e( 'Features' , 'js_css_include_manager' ); ?></strong></p>
-							<p><?php _e( 'Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break.' , 'js_css_include_manager' ); ?></p>
-						</div>
-						<div class="donation_memo">
-							<p><strong><?php _e( 'The primary use of donations' , 'js_css_include_manager' ); ?></strong></p>
-							<ul>
-								<li>- <?php _e( 'Liquidation of time and value' , 'js_css_include_manager' ); ?></li>
-								<li>- <?php _e( 'Additional suggestions feature' , 'js_css_include_manager' ); ?></li>
-								<li>- <?php _e( 'Maintain motivation' , 'js_css_include_manager' ); ?></li>
-								<li>- <?php _e( 'Ensure time as the father of Sunday' , 'js_css_include_manager' ); ?></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
 				<div class="stuffbox" id="aboutbox">
 					<h3><span class="hndle"><?php _e( 'About plugin' , 'js_css_include_manager' ); ?></span></h3>
 					<div class="inside">
 						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.5.1</p>
 						<ul>
-							<li><a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=1_1" target="_blank"><?php _e( 'Developer\'s site' , 'js_css_include_manager' ); ?></a></li>
+							<li><a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank"><?php _e( 'Developer\'s site' , 'js_css_include_manager' ); ?></a></li>
 							<li><a href="http://wordpress.org/support/plugin/js-css-include-manager" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>
 							<li><a href="http://wordpress.org/support/view/plugin-reviews/js-css-include-manager" target="_blank"><?php _e( 'Reviews' , 'js_css_include_manager' ); ?></a></li>
 							<li><a href="https://twitter.com/gqevu6bsiz" target="_blank">twitter</a></li>
@@ -400,12 +375,12 @@ function js_css_include_manager_setting() {
 				<div class="stuffbox" id="usefulbox">
 					<h3><span class="hndle"><?php _e( 'Useful plugins' , 'js_css_include_manager' ); ?></span></h3>
 					<div class="inside">
+						<p><strong><a href="http://wpadminuicustomize.com/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank">WP Admin UI Customize</a></strong></p>
+						<p class="description"><?php _e( 'Customize a variety of screen management.' , 'js_css_include_manager' ); ?></p>
 						<p><strong><a href="http://wordpress.org/extend/plugins/custom-options-plus-post-in/" target="_blank">Custom Options Plus Post in</a></strong></p>
 						<p class="description"><?php _e( 'The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article.' , 'js_css_include_manager' ); ?></p>
 						<p><strong><a href="http://wordpress.org/extend/plugins/announce-from-the-dashboard/" target="_blank">Announce from the Dashboard</a></strong></p>
 						<p class="description"><?php _e( 'Announce to display the dashboard. Change the display to a different user role.' , 'js_css_include_manager' ); ?></p>
-						<p><strong><a href="http://wordpress.org/extend/plugins/wp-admin-ui-customize/" target="_blank">WP Admin UI Customize</a></strong></p>
-						<p class="description"><?php _e( 'Customize a variety of screen management.' , 'js_css_include_manager' ); ?></p>
 						<p>&nbsp;</p>
 					</div>
 				</div>
