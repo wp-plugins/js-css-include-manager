@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: Javascript file and Css file for include manage.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.2
+Version: 1.2.1
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jsim&utm_campaign=1_2
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_2_1
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,7 +28,7 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.2');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.2.1');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
@@ -67,13 +67,15 @@ function js_css_include_manager_admin_footer_text( $text ) {
 		
 	return $text;
 }
-add_filter( 'admin_footer_text' ,'js_css_include_manager_admin_footer_text' );
 
 
 
 
 // setting
 function js_css_include_manager_setting() {
+
+	add_filter( 'admin_footer_text' ,'js_css_include_manager_admin_footer_text' );
+
 	$UPFN = 'sett';
 	$Msg = '';
 
