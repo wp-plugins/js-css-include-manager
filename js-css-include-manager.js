@@ -23,6 +23,7 @@ jQuery(document).ready(function($) {
 	$UpdateTr.children("td.use").children("select").hide();
 	$UpdateTr.children("td.filetype").children("select").hide();
 	$UpdateTr.children("td.output").children("select").hide();
+	$UpdateTr.children("td.condition").children("select").hide();
 	$UpdateTr.children("td.location").children("ul").hide();
 	$UpdateTr.children("td.operation").children("p.submit").hide();
 
@@ -34,6 +35,8 @@ jQuery(document).ready(function($) {
 		$ParentTr.children("td.filetype").children("select").show();
 		$ParentTr.children("td.output").children("span").hide();
 		$ParentTr.children("td.output").children("select").show();
+		$ParentTr.children("td.condition").children("span").hide();
+		$ParentTr.children("td.condition").children("select").show();
 		$ParentTr.children("td.location").children("span").hide();
 		$ParentTr.children("td.location").children("ul").show();
 		$(this).parent().hide();

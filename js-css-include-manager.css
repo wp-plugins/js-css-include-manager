@@ -37,10 +37,13 @@ form#js_css_include_manager_form div#update table th.use {
 	width: 11%;
 }
 form#js_css_include_manager_form div#update table th.filetype {
-	width: 23%;
+	width: 13%;
 }
 form#js_css_include_manager_form div#update table th.output {
 	width: 12%;
+}
+form#js_css_include_manager_form div#update table th.condition {
+	width: 29%;
 }
 form#js_css_include_manager_form div#update table th.operation {
 	width: 11%;

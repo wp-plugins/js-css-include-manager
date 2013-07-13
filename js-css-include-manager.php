@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: Javascript file and Css file for include manage.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.2.1
+Version: 1.3.0
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_2_1
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,7 +28,7 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.2.1');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.0');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
@@ -101,6 +101,7 @@ function js_css_include_manager_setting() {
 					$Update[$key]["use"] =  strip_tags($_POST[$type][$key]["use"]);
 					$Update[$key]["filetype"] =  strip_tags($_POST[$type][$key]["filetype"]);
 					$Update[$key]["output"] =  strip_tags($_POST[$type][$key]["output"]);
+					$Update[$key]["condition"] =  strip_tags($_POST[$type][$key]["condition"]);
 					$Update[$key]["location"]["num"] =  strip_tags($_POST[$type][$key]["location"]["num"]);
 					$Update[$key]["location"]["name"] =  strip_tags($_POST[$type][$key]["location"]["name"]);
 				}
@@ -114,6 +115,7 @@ function js_css_include_manager_setting() {
 						"use" => strip_tags($_POST[$type]["use"]),
 						"filetype" => strip_tags($_POST[$type]["filetype"]),
 						"output" => strip_tags($_POST[$type]["output"]),
+						"condition" => strip_tags($_POST[$type]["condition"]),
 						"location" => array(
 							"num" => strip_tags($num),
 							"name" => strip_tags($_POST[$type]["location"]["name"][$num])
@@ -129,15 +131,18 @@ function js_css_include_manager_setting() {
 	}
 
 	// include file type 
-	$Filetype = array(1 => 'Javascript', 2 => 'Cascading Style Sheets');
+	$Filetype = array(1 => 'Javascript', 2 => 'CSS');
 	
 	// output
 	$Output = array(1 => 'wp_head', 2 => 'wp_footer');
 
+	// condition
+	$Condition = array(1 => __( 'No further condition' , 'js_css_include_manager' ), 2 => 'is_user_logged_in()', 3=>"current_user_can('manage_options')", 4=> 'is_front_page()');
+
 	// admin or normal
 	$Use = array(1 => 'admin', 2 => 'normal');
 
-	// ファイルを読み込む階層
+	// include location
 	$Location = js_css_include_manager_location();
 
 	// get data
@@ -150,9 +155,9 @@ function js_css_include_manager_setting() {
 ?>
 <div class="wrap">
 	<div class="icon32" id="icon-options-general"></div>
-	<h2><?php _e('Js Css Include Manager\'s Setting', 'js_css_include_manager'); ?></h2>
+	<h2><?php _e('Js Css Include Manager\'s Settings', 'js_css_include_manager'); ?></h2>
 	<?php echo $Msg; ?>
-	<p><a href="http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>"><?php _e( 'Please donation' , 'js_css_include_manager' ); ?></a></p>
+	<p><a href="http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>"><?php _e( 'Please donate' , 'js_css_include_manager' ); ?></a></p>
 
 	<div class="metabox-holder columns-2">
 
@@ -164,7 +169,7 @@ function js_css_include_manager_setting() {
 		
 				<?php $type = 'create'; ?>
 				<div id="<?php echo $type; ?>">
-					<h3><?php _e('Setting an include file.', 'js_css_include_manager'); ?></h3>
+					<h3><?php _e('Set a file to include:', 'js_css_include_manager'); ?></h3>
 					<table class="form-table">
 						<tbody>
 							<tr>
@@ -201,6 +206,21 @@ function js_css_include_manager_setting() {
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</select>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="<?php echo $type; ?>_condition"><?php _e('Condition', 'js_css_include_manager'); ?></label> *</th>
+								<td>
+									<select name="<?php echo $type; ?>[condition]" id="<?php echo $type; ?>condition">
+										<?php foreach($Condition as $key => $val) : ?>
+											<?php if(!empty($val)) : ?>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+											<?php endif; ?>
+										<?php endforeach; ?>
+									</select>
+									<code><a href="http://codex.wordpress.org/Function_Reference/is_user_logged_in" target="_blank">is_user_logged_in()</a></code>
+									<code><a href="http://codex.wordpress.org/Function_Reference/current_user_can" target="_blank">current_user_can()</a></code>
+									<code><a href="http://codex.wordpress.org/Function_Reference/is_front_page" target="_blank">is_front_page()</a></code>
 								</td>
 							</tr>
 							<tr>
@@ -243,6 +263,7 @@ function js_css_include_manager_setting() {
 									<th class="use"><?php _e('Use', 'js_css_include_manager'); ?></th>
 									<th class="filetype"><?php _e('File Type', 'js_css_include_manager'); ?></th>
 									<th class="output"><?php _e('Output', 'js_css_include_manager'); ?></th>
+									<th class="condition"><?php _e('Condition', 'js_css_include_manager'); ?></th>
 									<th class="location"><?php _e('Location', 'js_css_include_manager'); ?></th>
 									<th class="operation">&nbsp;</th>
 								</tr>
@@ -291,6 +312,26 @@ function js_css_include_manager_setting() {
 												<?php endforeach; ?>
 											</select>
 											<span><?php echo $Output[strip_tags($val["output"])]; ?></span>
+										</td>
+										<td class="condition">
+											<select name="<?php echo $type; ?>[<?php echo $key; ?>][condition]">
+												<?php foreach($Condition as $condnum => $condtype) : ?>
+													<?php $Selected = ''; ?>
+													<?php if(!empty($condtype)) : ?>
+														<?php if(!empty($val["condition"]) && $condnum == strip_tags($val["condition"])) : ?>
+															<?php $Selected = 'selected="selected"'; ?>
+														<?php endif; ?>
+														<option value="<?php echo $condnum; ?>" <?php echo $Selected; ?>><?php echo $condtype; ?></option>
+													<?php endif; ?>
+												<?php endforeach; ?>
+											</select>
+											<span>
+												<?php if( !empty( $val["condition"] ) ) : ?>
+													<?php echo $Condition[strip_tags($val["condition"])]; ?>
+												<?php else : ?>
+													<?php echo $Condition[1]; ?>
+												<?php endif; ?>
+											</span>
 										</td>
 										<td class="location">
 											<ul>
@@ -363,7 +404,7 @@ function js_css_include_manager_setting() {
 				<div class="stuffbox" id="aboutbox">
 					<h3><span class="hndle"><?php _e( 'About plugin' , 'js_css_include_manager' ); ?></span></h3>
 					<div class="inside">
-						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.5.1</p>
+						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.5.2</p>
 						<ul>
 							<li><a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank"><?php _e( 'Developer\'s site' , 'js_css_include_manager' ); ?></a></li>
 							<li><a href="http://wordpress.org/support/plugin/js-css-include-manager" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>
@@ -413,15 +454,15 @@ function js_css_include_manager_location() {
 			'location' => content_url().'/plugins/'
 		),
 		3 => array(
-			'name' => __('This Active Theme\'s Directory', 'js_css_include_manager').' <span class="description">('.get_template().')</span>',
+			'name' => __('The Active Theme\'s Directory', 'js_css_include_manager').' <span class="description">('.get_template().')</span>',
 			'location' => get_template_directory_uri().'/'
 		),
 		4 => array(
-			'name' => __('Other themes Directory', 'js_css_include_manager'),
+			'name' => __('Other Theme\'s Directory', 'js_css_include_manager'),
 			'location' => content_url().'/themes/'
 		),
 		5 => array(
-			'name' => __('External file', 'js_css_include_manager'),
+			'name' => __('External File', 'js_css_include_manager'),
 			'location' => ''
 		),
 	);
@@ -481,6 +522,15 @@ function js_css_include_manager_include_filter( $Setting ) {
 					$File = strip_tags($Location[$Val["location"]["num"]]["location"].strip_tags($Val["location"]["name"]));
 					$Val["file"] = $File;
 					$Val["dn"] = $key;
+					if(isset($Val['condition'])) {
+						if (2 == $Val['condition']) {
+							if (!is_user_logged_in()) continue;
+						} elseif (3 == $Val['condition']) {
+							if (!current_user_can('manage_options')) continue;
+						} elseif (4 == $Val['condition']) {
+							if (!is_front_page()) continue;
+						}
+					}
 					if($Val["filetype"] == 1) {
 						$DataFilt['js'][] = $Val;
 					} else if($Val["filetype"] == 2) {
@@ -494,16 +544,17 @@ function js_css_include_manager_include_filter( $Setting ) {
 	return $DataFilt;
 }
 
-
-
-// admin header include
-function js_css_include_manager_admin_head() {
-	$Setting = array("use" => 1, "output" => 1);
+function js_css_include_manager_doinclude($Setting) {
 	$Data = js_css_include_manager_include_filter($Setting);
 
 	if(!empty($Data)) {
 		js_css_include_manager_include($Data);
 	}
+}
+
+// admin header include
+function js_css_include_manager_admin_head() {
+	js_css_include_manager_doinclude(array("use" => 1, "output" => 1));
 }
 add_action('admin_enqueue_scripts', 'js_css_include_manager_admin_head');
 
@@ -511,12 +562,7 @@ add_action('admin_enqueue_scripts', 'js_css_include_manager_admin_head');
 
 // admin footer include
 function js_css_include_manager_admin_foot() {
-	$Setting = array("use" => 1, "output" => 2);
-	$Data = js_css_include_manager_include_filter($Setting);
-
-	if(!empty($Data)) {
-		js_css_include_manager_include($Data);
-	}
+	js_css_include_manager_doinclude(array("use" => 1, "output" => 2));
 }
 add_action('admin_footer', 'js_css_include_manager_admin_foot');
 
@@ -524,12 +570,7 @@ add_action('admin_footer', 'js_css_include_manager_admin_foot');
 
 // normal header include
 function js_css_include_manager_normal_head() {
-	$Setting = array("use" => 2, "output" => 1);
-	$Data = js_css_include_manager_include_filter($Setting);
-
-	if(!empty($Data)) {
-		js_css_include_manager_include($Data);
-	}
+	js_css_include_manager_doinclude(array("use" => 2, "output" => 1));
 }
 add_action('wp_enqueue_scripts', 'js_css_include_manager_normal_head');
 
@@ -537,12 +578,7 @@ add_action('wp_enqueue_scripts', 'js_css_include_manager_normal_head');
 
 // normal footer include
 function js_css_include_manager_normal_foot() {
-	$Setting = array("use" => 2, "output" => 2);
-	$Data = js_css_include_manager_include_filter($Setting);
-
-	if(!empty($Data)) {
-		js_css_include_manager_include($Data);
-	}
+	js_css_include_manager_doinclude(array("use" => 2, "output" => 2));
 }
 add_action('get_footer', 'js_css_include_manager_normal_foot');
 

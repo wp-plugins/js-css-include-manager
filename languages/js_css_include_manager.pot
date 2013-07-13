@@ -2,12 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-05-11 15:20+0900\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2013-07-13 17:56+0900\n"
+"Language-Team: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Language: Japanese\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -16,10 +15,10 @@ msgstr ""
 msgid "Javascript file and Css file for include manage."
 msgstr ""
 
-msgid "Js Css Include Manager's Setting"
+msgid "Js Css Include Manager's Settings"
 msgstr ""
 
-msgid "Setting an include file."
+msgid "Set a file to include:"
 msgstr ""
 
 msgid "Use"
@@ -29,6 +28,12 @@ msgid "File Type"
 msgstr ""
 
 msgid "Output"
+msgstr ""
+
+msgid "Condition"
+msgstr ""
+
+msgid "No further condition"
 msgstr ""
 
 msgid "admin"
@@ -46,13 +51,13 @@ msgstr ""
 msgid "Other Plugin Directory"
 msgstr ""
 
-msgid "This Active Theme's Directory"
+msgid "The Active Theme's Directory"
 msgstr ""
 
-msgid "Other themes Directory"
+msgid "Other Theme's Directory"
 msgstr ""
 
-msgid "External file"
+msgid "External File"
 msgstr ""
 
 msgid "Include setting that you created."
@@ -61,7 +66,7 @@ msgstr ""
 msgid "Not created include setting."
 msgstr ""
 
-msgid "Please donation"
+msgid "Please donate"
 msgstr ""
 
 msgid "About plugin"
@@ -87,3 +92,4 @@ msgstr ""
 
 msgid "Customize a variety of screen management."
 msgstr ""
+
