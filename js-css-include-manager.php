@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Js Css Include Manager
-Description: Javascript file and Css file for include manage.
+Description: This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.3.0
+Version: 1.3.1
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_1
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,7 +28,7 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.0');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.1');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
@@ -78,8 +78,10 @@ function js_css_include_manager_setting() {
 
 	$UPFN = 'sett';
 	$Msg = '';
+	$nonce = array( 'v' => 'jcim_update' , 'f' => 'jcim_update_field' );
+	$nonce_c = wp_create_nonce( $nonce["v"] );
 
-	if(isset($_GET["delete"])) {
+	if( isset( $_GET["delete"] ) && check_admin_referer( $nonce["v"] , $nonce["f"] ) ) {
 
 		$id = $_GET["delete"];
 		$Data = get_option(JS_CSS_INCLUDE_MANAGER_RECORD_NAME);
@@ -90,7 +92,7 @@ function js_css_include_manager_setting() {
 	} else if(!empty($_POST[$UPFN])) {
 
 		// update
-		if($_POST[$UPFN] == 'Y') {
+		if($_POST[$UPFN] == 'Y' && check_admin_referer( $nonce["v"] , $nonce["f"] ) ) {
 			unset($_POST[$UPFN]);
 
 			$Update = array();
@@ -165,7 +167,7 @@ function js_css_include_manager_setting() {
 
 			<form id="js_css_include_manager_form" method="post" action="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>">
 				<input type="hidden" name="<?php echo $UPFN; ?>" value="Y">
-				<?php wp_nonce_field(-1, '_wpnonce', false); ?>
+				<?php wp_nonce_field( $nonce["v"] , $nonce["f"] ); ?>
 		
 				<?php $type = 'create'; ?>
 				<div id="<?php echo $type; ?>">
@@ -377,7 +379,7 @@ function js_css_include_manager_setting() {
 											<span>
 												<a class="edit" href="javascript:void(0)"><?php _e('Edit'); ?></a>
 												&nbsp;|&nbsp;
-												<a class="delete" href="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>&delete=<?php echo $key; ?>"><?php _e('Delete'); ?></a>
+												<a class="delete" href="<?php echo JS_CSS_INCLUDE_MANAGER_MANAGE_URL; ?>&delete=<?php echo $key; ?>&<?php echo $nonce["f"]; ?>=<?php echo $nonce_c; ?>"><?php _e('Delete'); ?></a>
 											</span>
 											<p class="submit">
 												<input type="button" class="button-primary" value="<?php _e('Save'); ?>" />
@@ -394,7 +396,7 @@ function js_css_include_manager_setting() {
 		
 					<?php endif; ?>
 				</div>
-		
+
 			</form>
 
 		</div>
@@ -568,7 +570,7 @@ add_action('admin_footer', 'js_css_include_manager_admin_foot');
 
 
 
-// normal header include
+// site header include
 function js_css_include_manager_normal_head() {
 	js_css_include_manager_doinclude(array("use" => 2, "output" => 1));
 }
@@ -576,7 +578,7 @@ add_action('wp_enqueue_scripts', 'js_css_include_manager_normal_head');
 
 
 
-// normal footer include
+// site footer include
 function js_css_include_manager_normal_foot() {
 	js_css_include_manager_doinclude(array("use" => 2, "output" => 2));
 }

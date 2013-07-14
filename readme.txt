@@ -1,19 +1,23 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_1
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.4.2
 Tested up to: 3.5.2
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPL2
 
-Manages customised inclusion of a JavaScript or CSS file.
+This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 
 == Description ==
 
-This plug-in is a will clean the file management.
-You can only manage the screen. You can also only site the screen.
-You can choose to include via wp_header or wp_footer.
+This plugin allows you to include extra JavaScript or CSS files in your WordPress page.
+
+You can:
+* Include as many as you like.
+* Choose whether files are to be included on the front-end or the back-end.
+* Choose where to include them in the header or the footer.
+* Choose conditions to use for inclusion (logged-in users only, admin users only, front page only).
 
 == Installation ==
 
@@ -34,6 +38,9 @@ You can choose to include via wp_header or wp_footer.
 2. Configuration Example
 
 == Changelog ==
+
+= 1.3.1 =
+Added a confirmation of Nonce field.
 
 = 1.3 =
 Adding capability to add file based on conditions (e.g. user is logged in, user is an admin, etc.).
