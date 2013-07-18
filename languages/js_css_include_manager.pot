@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-13 17:56+0900\n"
+"PO-Revision-Date: 2013-07-18 09:36+0900\n"
 "Language-Team: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -36,10 +36,10 @@ msgstr ""
 msgid "No further condition"
 msgstr ""
 
-msgid "admin"
+msgid "Admin Screen"
 msgstr ""
 
-msgid "normal"
+msgid "Site Screen"
 msgstr ""
 
 msgid "Location"
@@ -66,7 +66,25 @@ msgstr ""
 msgid "Not created include setting."
 msgstr ""
 
-msgid "Please donate"
+msgid "How may I help you?"
+msgstr ""
+
+msgid "I am good at Admin Screen Customize."
+msgstr ""
+
+msgid "Please consider the request to me if it is good."
+msgstr ""
+
+msgid "Example Customize"
+msgstr ""
+
+msgid "Contact me"
+msgstr ""
+
+msgid "Please donate."
+msgstr ""
+
+msgid "Donate"
 msgstr ""
 
 msgid "About plugin"

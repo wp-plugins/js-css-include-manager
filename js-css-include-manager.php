@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.3.1
+Version: 1.3.1.1
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_1
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_1_1
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,7 +28,7 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.1');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.1.1');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
@@ -142,7 +142,7 @@ function js_css_include_manager_setting() {
 	$Condition = array(1 => __( 'No further condition' , 'js_css_include_manager' ), 2 => 'is_user_logged_in()', 3=>"current_user_can('manage_options')", 4=> 'is_front_page()');
 
 	// admin or normal
-	$Use = array(1 => 'admin', 2 => 'normal');
+	$Use = array(1 => __( 'Admin Screen' , 'js_css_include_manager' ), 2 => __( 'Site Screen' , 'js_css_include_manager' ));
 
 	// include location
 	$Location = js_css_include_manager_location();
@@ -159,7 +159,6 @@ function js_css_include_manager_setting() {
 	<div class="icon32" id="icon-options-general"></div>
 	<h2><?php _e('Js Css Include Manager\'s Settings', 'js_css_include_manager'); ?></h2>
 	<?php echo $Msg; ?>
-	<p><a href="http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>"><?php _e( 'Please donate' , 'js_css_include_manager' ); ?></a></p>
 
 	<div class="metabox-holder columns-2">
 
@@ -180,7 +179,7 @@ function js_css_include_manager_setting() {
 									<select name="<?php echo $type; ?>[use]" id="<?php echo $type; ?>_use">
 										<?php foreach($Use as $key => $val) : ?>
 											<?php if(!empty($val)) : ?>
-												<option value="<?php echo $key; ?>"><?php echo _e($val, 'js_css_include_manager'); ?></option>
+												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</select>
@@ -281,11 +280,11 @@ function js_css_include_manager_setting() {
 														<?php if($usenum == strip_tags($val["use"])) : ?>
 															<?php $Selected = 'selected="selected"'; ?>
 														<?php endif; ?>
-														<option value="<?php echo $usenum; ?>" <?php echo $Selected; ?>><?php echo _e($usetype, 'js_css_include_manager'); ?></option>
+														<option value="<?php echo $usenum; ?>" <?php echo $Selected; ?>><?php echo $usetype; ?></option>
 													<?php endif; ?>
 												<?php endforeach; ?>
 											</select>
-											<span><?php echo _e($Use[strip_tags($val["use"])], 'js_css_include_manager'); ?></span>
+											<span><?php echo $Use[strip_tags($val["use"])]; ?></span>
 										</td>
 										<td class="filetype">
 											<select name="<?php echo $type; ?>[<?php echo $key; ?>][filetype]">
@@ -366,11 +365,11 @@ function js_css_include_manager_setting() {
 												<?php $FileUrl = $Location[strip_tags($val["location"]["num"])]["location"].strip_tags($val["location"]["name"]); ?>
 												<a href="<?php echo $FileUrl; ?>" target="_blank"><?php echo esc_html($FileUrl); ?></a>
 												<?php if(!empty($FileUrl)) : ?>
-													<?php $Gh = @get_headers($FileUrl); ?>
-													<?php if(empty($Gh[0])) : ?>
+													<?php $response = wp_remote_get( $FileUrl ); ?>
+													<?php if ( is_wp_error( $response ) ) : ?>
 														<br /><code>No Header</code>
-													<?php elseif(!preg_match('#^HTTP/.*\s+[200|302]+\s#i', $Gh[0])) : ?>
-														<br /><code><?php echo $Gh[0]; ?></code>
+													<?php elseif( 200 != wp_remote_retrieve_response_code( $response ) ) : ?>
+														<br /><code><?php echo wp_remote_retrieve_response_code( $response ); ?></code>
 													<?php endif; ?>
 												<?php endif; ?>
 											</span>
@@ -403,10 +402,34 @@ function js_css_include_manager_setting() {
 		
 		<div class="postbox-container" id="postbox-container-2">
 			
+			<div class="stuffbox" style="border-color: #FFC426; border-width: 3px;">
+				<h3 style="background: #FFF2D0; border-color: #FFC426;"><span class="hndle"><?php _e( 'How may I help you?' , 'js_css_include_manager' ); ?></span></h3>
+				<div class="inside">
+					<p style="float: right;">
+						<img src="http://www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=46" width="46" /><br />
+						<a href="http://gqevu6bsiz.chicappa.jp/contact-us/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank">gqevu6bsiz</a>
+					</p>
+					<p><?php _e( 'I am good at Admin Screen Customize.' , 'js_css_include_manager' ); ?></p>
+					<p><?php _e( 'Please consider the request to me if it is good.' , 'js_css_include_manager' ); ?></p>
+					<p>
+						<a href="http://wpadminuicustomize.com/blog/category/example/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank"><?php _e ( 'Example Customize' , 'js_css_include_manager' ); ?></a> :
+						<a href="http://gqevu6bsiz.chicappa.jp/contact-us/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank"><?php _e( 'Contact me' , 'js_css_include_manager' ); ?></a></p>
+				</div>
+			</div>
+
+			<div class="stuffbox" style="background: #87BCE4; border: 1px solid #227499;">
+				<div class="inside">
+					<p style="color: #FFFFFF; font-size: 20px;"><?php _e( 'Please donate.' , 'js_css_include_manager' ); ?></p>
+					<p style="text-align: center;">
+						<a href="http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" class="button-primary" target="_blank"><?php _e( 'Donate' , 'js_css_include_manager' ); ?></a>
+					</p>
+				</div>
+			</div>
+
 				<div class="stuffbox" id="aboutbox">
 					<h3><span class="hndle"><?php _e( 'About plugin' , 'js_css_include_manager' ); ?></span></h3>
 					<div class="inside">
-						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.5.2</p>
+						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.6 RC1</p>
 						<ul>
 							<li><a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank"><?php _e( 'Developer\'s site' , 'js_css_include_manager' ); ?></a></li>
 							<li><a href="http://wordpress.org/support/plugin/js-css-include-manager" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>

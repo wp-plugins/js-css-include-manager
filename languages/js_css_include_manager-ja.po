@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-14 21:07+0900\n"
+"PO-Revision-Date: 2013-07-18 09:36+0900\n"
 "Language-Team: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Last-Translator: Gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 
 msgid "This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen."
-msgstr "このプラグインはファイル管理をきれいにします。管理画面の設定。サイトだけの設定。"
+msgstr "ファイル管理をきれいにする為のプラグインです。管理画面だけのファイル管理設定。サイトだけのファイル管理設定も。"
 
 msgid "Js Css Include Manager's Settings"
 msgstr "Js Css 読み込み設定管理"
@@ -36,11 +36,11 @@ msgstr "条件分岐"
 msgid "No further condition"
 msgstr "指定しない"
 
-msgid "admin"
+msgid "Admin Screen"
 msgstr "管理画面"
 
-msgid "normal"
-msgstr "通常サイト"
+msgid "Site Screen"
+msgstr "サイト"
 
 msgid "Location"
 msgstr "読み込み先"
@@ -66,8 +66,26 @@ msgstr "作成した読み込み設定"
 msgid "Not created include setting."
 msgstr "作成された読み込み設定はありません。"
 
-msgid "Please donate"
+msgid "How may I help you?"
+msgstr "何かお手伝いできることはありますか？"
+
+msgid "I am good at Admin Screen Customize."
+msgstr "私は管理画面のカスタマイズを得意とします。"
+
+msgid "Please consider the request to me if it is good."
+msgstr "宜しければご検討ください。"
+
+msgid "Example Customize"
+msgstr "カスタマイズ例"
+
+msgid "Contact me"
+msgstr "お問い合わせ"
+
+msgid "Please donate."
 msgstr "寄付のお願い"
+
+msgid "Donate"
+msgstr "寄付"
 
 msgid "About plugin"
 msgstr "プラグインについて"

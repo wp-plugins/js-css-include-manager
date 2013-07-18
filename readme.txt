@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_1
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_1_1
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.4.2
-Tested up to: 3.5.2
-Stable tag: 1.3.1
+Tested up to: 3.6 RC1
+Stable tag: 1.3.1.1
 License: GPL2
 
 This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
@@ -21,10 +21,9 @@ You can:
 
 == Installation ==
 
-1. Upload the full directory into your wp-content/plugins directory
-2. Activate the plugin at the plugin administration page
-3. Open the plugin configuration page,
-   which is located under Options -> Js Css Include Manager
+1. Upload the full directory to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Go to `WP-Admin -> Settings -> Js Css Include Manager` to configure the plugin.
 
 == Frequently Asked Questions ==
 
@@ -38,6 +37,11 @@ You can:
 2. Configuration Example
 
 == Changelog ==
+
+= 1.3.1.1 =
+* Translate fix : Japanese.
+* Checked Compatibility.
+* Added Information of plugin.
 
 = 1.3.1 =
 Added a confirmation of Nonce field.
