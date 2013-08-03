@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.3.1.1
+Version: 1.3.1.2 alpha
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_1_1
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_1_2
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -28,11 +28,12 @@ Domain Path: /languages
 
 load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.1.1');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.1.2 alpha');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_DIR', WP_PLUGIN_URL.'/'.dirname(plugin_basename(__FILE__)).'/');
+
 ?>
 <?php
 function js_css_include_manager_add_menu() {
@@ -75,7 +76,7 @@ function js_css_include_manager_admin_footer_text( $text ) {
 function js_css_include_manager_setting() {
 
 	add_filter( 'admin_footer_text' ,'js_css_include_manager_admin_footer_text' );
-
+	
 	$UPFN = 'sett';
 	$Msg = '';
 	$nonce = array( 'v' => 'jcim_update' , 'f' => 'jcim_update_field' );
@@ -106,6 +107,11 @@ function js_css_include_manager_setting() {
 					$Update[$key]["condition"] =  strip_tags($_POST[$type][$key]["condition"]);
 					$Update[$key]["location"]["num"] =  strip_tags($_POST[$type][$key]["location"]["num"]);
 					$Update[$key]["location"]["name"] =  strip_tags($_POST[$type][$key]["location"]["name"]);
+					$data_ver = 0;
+					if( !empty( $_POST[$type][$key]["data_ver"] ) ) {
+						$data_ver = intval($_POST[$type][$key]["data_ver"]);
+					}
+					$Update[$key]["data_ver"] = $data_ver;
 				}
 			}
 			
@@ -113,6 +119,10 @@ function js_css_include_manager_setting() {
 			if(!empty($_POST[$type]) && !empty($_POST[$type]["location"]["num"])) {
 				$num = $_POST[$type]["location"]["num"];
 				if(!empty($_POST[$type]["location"]["name"][$num])) {
+					$data_ver = 0;
+					if( !empty( $_POST[$type]["data_ver"] ) ) {
+						$data_ver = intval($_POST[$type]["data_ver"]);
+					}
 					$Update[] = array(
 						"use" => strip_tags($_POST[$type]["use"]),
 						"filetype" => strip_tags($_POST[$type]["filetype"]),
@@ -121,10 +131,12 @@ function js_css_include_manager_setting() {
 						"location" => array(
 							"num" => strip_tags($num),
 							"name" => strip_tags($_POST[$type]["location"]["name"][$num])
-						)
+						),
+						"data_ver" => $data_ver,
 					);
 				}
 			}
+			print_r($Update);
 
 			update_option(JS_CSS_INCLUDE_MANAGER_RECORD_NAME, $Update);
 			$Msg = '<div class="updated"><p><strong>'.__('Settings saved.').'</strong></p></div>';
@@ -169,6 +181,7 @@ function js_css_include_manager_setting() {
 				<?php wp_nonce_field( $nonce["v"] , $nonce["f"] ); ?>
 		
 				<?php $type = 'create'; ?>
+				<input type="hidden" name="<?php echo $type; ?>[data_ver]" value="1" />
 				<div id="<?php echo $type; ?>">
 					<h3><?php _e('Set a file to include:', 'js_css_include_manager'); ?></h3>
 					<table class="form-table">
@@ -348,6 +361,9 @@ function js_css_include_manager_setting() {
 															<?php $Disabled = ''; ?>
 															<?php $Value = strip_tags($val["location"]["name"]); ?>
 														<?php endif; ?>
+														<?php if( empty( $val["data_ver"] ) && $location_num == 3 ) : ?>
+															<?php $location_val = array( "name" => __('The Active Theme\'s Directory', 'js_css_include_manager').' <span class="description">(' . get_template() . ')</span>' , "location" => get_template_directory_uri() . '/' ); ?>
+														<?php endif; ?>
 														<li>
 															<label><input type="radio" name="<?php echo $type; ?>[<?php echo $key; ?>][location][num]" value="<?php echo $location_num; ?>" <?php echo $Checked; ?> /><?php echo $location_val["name"]; ?></label>
 															<?php if(!empty($location_val["location"])) : ?>
@@ -363,6 +379,9 @@ function js_css_include_manager_setting() {
 		
 											<span>
 												<?php $FileUrl = $Location[strip_tags($val["location"]["num"])]["location"].strip_tags($val["location"]["name"]); ?>
+												<?php if( empty( $val["data_ver"] ) && $val["location"]["num"] == 3 ) : ?>
+													<?php $FileUrl = get_template_directory_uri() . '/' . strip_tags($val["location"]["name"]); ?>
+												<?php endif; ?>
 												<a href="<?php echo $FileUrl; ?>" target="_blank"><?php echo esc_html($FileUrl); ?></a>
 												<?php if(!empty($FileUrl)) : ?>
 													<?php $response = wp_remote_get( $FileUrl ); ?>
@@ -375,6 +394,8 @@ function js_css_include_manager_setting() {
 											</span>
 										</td>
 										<td class="operation">
+											<?php $Val = ''; if( !empty( $val["data_ver"] ) ) $Val = $val["data_ver"]; ?>
+											<input type="hidden" name="<?php echo $type; ?>[<?php echo $key; ?>][data_ver]" value="<?php echo $Val; ?>" />
 											<span>
 												<a class="edit" href="javascript:void(0)"><?php _e('Edit'); ?></a>
 												&nbsp;|&nbsp;
@@ -469,6 +490,8 @@ function js_css_include_manager_setting() {
 
 // location load
 function js_css_include_manager_location() {
+	$current_theme = wp_get_theme();
+
 	$Location = array(
 		1 => array(
 			'name' => __('This Plugin Directory', 'js_css_include_manager'),
@@ -479,8 +502,8 @@ function js_css_include_manager_location() {
 			'location' => content_url().'/plugins/'
 		),
 		3 => array(
-			'name' => __('The Active Theme\'s Directory', 'js_css_include_manager').' <span class="description">('.get_template().')</span>',
-			'location' => get_template_directory_uri().'/'
+			'name' => __('The Active Theme\'s Directory', 'js_css_include_manager').' <span class="description">(' . $current_theme->display('Name') . ')</span>',
+			'location' => get_stylesheet_directory_uri().'/'
 		),
 		4 => array(
 			'name' => __('Other Theme\'s Directory', 'js_css_include_manager'),
@@ -542,9 +565,15 @@ function js_css_include_manager_include_filter( $Setting ) {
 			// use = admin or normal
 			// filetype = javascript or css
 			// output =  wp_head or wp_footer
+			// condition = is_user_logged_in() etc...
+			// data_ver = legacy data identification
+			
 			if(!empty($Val["use"]) && !empty($Val["filetype"]) && !empty($Val["output"]) && !empty($Val["location"])) {
 				if($Val["use"] == $Setting["use"] && $Val["output"] == $Setting["output"]) {
 					$File = strip_tags($Location[$Val["location"]["num"]]["location"].strip_tags($Val["location"]["name"]));
+					if( empty( $Val["data_ver"] ) && $Val["location"]["num"] == 3 ) {
+						$File = strip_tags(get_template_directory_uri() . '/' .strip_tags($Val["location"]["name"]));
+					}
 					$Val["file"] = $File;
 					$Val["dn"] = $key;
 					if(isset($Val['condition'])) {
