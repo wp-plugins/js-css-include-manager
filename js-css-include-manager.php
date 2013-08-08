@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.3.1.2 alpha
+Version: 1.3.2
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_1_2
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_2
 Text Domain: js_css_include_manager
 Domain Path: /languages
 */
@@ -26,13 +26,16 @@ Domain Path: /languages
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-load_plugin_textdomain('js_css_include_manager', false, basename(dirname(__FILE__)).'/languages');
+load_plugin_textdomain('js_css_include_manager', false, dirname( plugin_basename( __FILE__ ) ).'/languages');
 
-define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.1.2 alpha');
+define ('JS_CSS_INCLUDE_MANAGER_VER', '1.3.2');
 define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_NAME', 'Js Css Include Manager');
 define ('JS_CSS_INCLUDE_MANAGER_MANAGE_URL', admin_url('options-general.php').'?page=js_css_include_manager');
 define ('JS_CSS_INCLUDE_MANAGER_RECORD_NAME', 'js_css_include_manager');
-define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_DIR', WP_PLUGIN_URL.'/'.dirname(plugin_basename(__FILE__)).'/');
+define ('JS_CSS_INCLUDE_MANAGER_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
+
+$Schema = is_ssl() ? 'https://' : 'http://';
+define ('JS_CSS_INCLUDE_MANAGER_SCHEMA', $Schema );
 
 ?>
 <?php
@@ -63,8 +66,8 @@ add_action('admin_menu', 'js_css_include_manager_add_menu');
 
 // footer text
 function js_css_include_manager_admin_footer_text( $text ) {
-		
-	$text = '<img src="http://www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=18" width="18" /> Plugin developer : <a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=footer&utm_content=jcim&utm_campaign=' . str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ) . '" target="_blank">gqevu6bsiz</a>';
+	
+	$text = '<img src="' . JS_CSS_INCLUDE_MANAGER_SCHEMA . 'www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=18" width="18" /> Plugin developer : <a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=footer&utm_content=jcim&utm_campaign=' . str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ) . '" target="_blank">gqevu6bsiz</a>';
 		
 	return $text;
 }
@@ -136,7 +139,6 @@ function js_css_include_manager_setting() {
 					);
 				}
 			}
-			print_r($Update);
 
 			update_option(JS_CSS_INCLUDE_MANAGER_RECORD_NAME, $Update);
 			$Msg = '<div class="updated"><p><strong>'.__('Settings saved.').'</strong></p></div>';
@@ -264,8 +266,7 @@ function js_css_include_manager_setting() {
 						<input type="button" class="button-primary" value="<?php _e('Save'); ?>" />
 					</p>
 				</div>
-		
-		
+
 				<?php $type = 'update'; ?>
 				<div id="<?php echo $type; ?>">
 					<h3><?php _e('Include setting that you created.', 'js_css_include_manager'); ?></h3>
@@ -427,7 +428,7 @@ function js_css_include_manager_setting() {
 				<h3 style="background: #FFF2D0; border-color: #FFC426;"><span class="hndle"><?php _e( 'How may I help you?' , 'js_css_include_manager' ); ?></span></h3>
 				<div class="inside">
 					<p style="float: right;">
-						<img src="http://www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=46" width="46" /><br />
+						<img src="<?php echo JS_CSS_INCLUDE_MANAGER_SCHEMA; ?>www.gravatar.com/avatar/7e05137c5a859aa987a809190b979ed4?s=46" width="46" /><br />
 						<a href="http://gqevu6bsiz.chicappa.jp/contact-us/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank">gqevu6bsiz</a>
 					</p>
 					<p><?php _e( 'I am good at Admin Screen Customize.' , 'js_css_include_manager' ); ?></p>
@@ -450,7 +451,7 @@ function js_css_include_manager_setting() {
 				<div class="stuffbox" id="aboutbox">
 					<h3><span class="hndle"><?php _e( 'About plugin' , 'js_css_include_manager' ); ?></span></h3>
 					<div class="inside">
-						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.6 RC1</p>
+						<p><?php _e( 'Version check' , 'js_css_include_manager' ); ?> : 3.4.2 - 3.6</p>
 						<ul>
 							<li><a href="http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=side&utm_content=jcim&utm_campaign=<?php echo str_replace( '.' , '_' , JS_CSS_INCLUDE_MANAGER_VER ); ?>" target="_blank"><?php _e( 'Developer\'s site' , 'js_css_include_manager' ); ?></a></li>
 							<li><a href="http://wordpress.org/support/plugin/js-css-include-manager" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>

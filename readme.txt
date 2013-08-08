@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_1_2
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_2
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.4.2
-Tested up to: 3.6 RC1
-Stable tag: 1.3.1.1
+Tested up to: 3.6
+Stable tag: 1.3.2
 License: GPL2
 
 This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
@@ -37,6 +37,9 @@ You can:
 2. Configuration Example
 
 == Changelog ==
+
+= 1.3.2 =
+* Support on SSL.
 
 = 1.3.1.2 alpha =
 * Fixed bug : Active themes directory location settings.
