@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_2
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_3
 Tags: js, javascript, css, include, manage, admin, front, site
-Requires at least: 3.4.2
-Tested up to: 3.6
-Stable tag: 1.3.2
+Requires at least: 3.6.1
+Tested up to: 3.8
+Stable tag: 1.3.3
 License: GPL2
 
 This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
@@ -14,10 +14,35 @@ This plug-in is a will clean the file management. You can only manage the screen
 This plugin allows you to include extra JavaScript or CSS files in your WordPress page.
 
 You can:
+
 * Include as many as you like.
 * Choose whether files are to be included on the front-end or the back-end.
 * Choose where to include them in the header or the footer.
 * Choose conditions to use for inclusion (logged-in users only, admin users only, front page only).
+* Choose conditions of you can add.
+
+Please if you want to add conditions.
+For example add filter:
+`
+add_filter( 'jcim_condition' , 'my_conditions' );
+function my_conditions( ) {
+	$conditions = array(
+		array(
+			"code" => "current_user_can",
+			"val" => "edit_themes",
+			"desc" => "Only edit theme role have user",
+			"help_link" => "http://codex.wordpress.org/Function_Reference/current_user_can"
+		),
+		array(
+			"code" => "is_admin",
+			"val" => "",
+			"desc" => "Only admin screen",
+			"help_link" => "http://codex.wordpress.org/Function_Reference/is_admin"
+		),
+	);
+	return $conditions;
+}
+`
 
 == Installation ==
 
@@ -35,8 +60,17 @@ You can:
 
 1. Settings Interface
 2. Configuration Example
+3. Conditions after added of settins interface
 
 == Changelog ==
+
+= 1.3.3 =
+* Updated: Change the source code.
+* Updated: Data save way of settings.
+* Updated: Change way to edit of settings.
+* Updated: Compatible for WP 3.8.
+* Updated: Screen shots.
+* Added: Filter for condition of settings.
 
 = 1.3.2 =
 * Support on SSL.

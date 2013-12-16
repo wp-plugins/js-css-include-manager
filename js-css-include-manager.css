@@ -1,14 +1,10 @@
-.columns-2 {
-	margin-right: 300px;
-}
-.postbox-container#postbox-container-1 {
-	float: left;
-	width: 100%;
-}
-.postbox-container#postbox-container-2 {
+.columns-2 #postbox-container-1 {
+	width: 38%;
+	margin-left: 2%;
 	float: right;
-	width: 280px;
-	margin-right: -300px;
+}
+.columns-2 #postbox-container-2 {
+	width: 60%;
 }
 
 
@@ -25,26 +21,89 @@
 	padding: 2px 10px;
 }
 
+.columns-2.full-width #postbox-container-1 {
+	width: 8%;
+	margin-left: 2%;
+}
+.columns-2.full-width #postbox-container-2 {
+	width: 90%;
+}
+.columns-2.full-width #postbox-container-1 .stuffbox, .columns-2.full-width #postbox-container-1 .description {
+	display: none;
+}
 
-form#js_css_include_manager_form table td ul li {
+body.version-3-8 .columns-2 #postbox-container-1 .toggle-plugin span {
+	width: 22px;
+	height: 13px;
+	display: inline-block;
+}
+body.version-3-8 .columns-2 #postbox-container-1 .toggle-plugin span:after {
+	content: '\f148';
+	display: inline;
+	font: 400 20px/1 dashicons;
+	width: 20px;
+	left: -3px;
+	top: -3px;
+}
+body.version-3-7-1 .columns-2 #postbox-container-1 .toggle-plugin span,
+body.version-3-7 .columns-2 #postbox-container-1 .toggle-plugin span,
+body.version-3-6-1 .columns-2 #postbox-container-1 .toggle-plugin span {
+	background: transparent url(../../../wp-admin/images/arrows.png) no-repeat 0 -107px;
+	padding-left: 16px;
+}
+body.version-3-7-1 .columns-2.full-width #postbox-container-1 .toggle-plugin span,
+body.version-3-7 .columns-2.full-width #postbox-container-1 .toggle-plugin span,
+body.version-3-6-1 .columns-2.full-width #postbox-container-1 .toggle-plugin span {
+	background-position: 0 -72px;
+}
+
+
+
+
+
+.postbox .hndle {
+	cursor: default; 	
+}
+.condition_desc {
+	display: none;
+}
+
+
+
+
+
+.wrap_jcim #create table td ul li {
 	margin-bottom: 20px;
 }
-form#js_css_include_manager_form table td ul li label {
+.wrap_jcim #create table td ul li label {
 	display: block;
 }
 
-form#js_css_include_manager_form div#update table th.use {
+.wrap_jcim #update table tr.saved td {
+	background: #fef4c9;
+}
+.wrap_jcim #update table th.use {
 	width: 11%;
 }
-form#js_css_include_manager_form div#update table th.filetype {
+.wrap_jcim #update th.filetype {
 	width: 13%;
 }
-form#js_css_include_manager_form div#update table th.output {
+.wrap_jcim #update table th.output {
 	width: 12%;
 }
-form#js_css_include_manager_form div#update table th.condition {
+.wrap_jcim #update table th.condition {
 	width: 29%;
 }
-form#js_css_include_manager_form div#update table th.operation {
+.wrap_jcim #update table td.location .spinner {
+	float: none;
+}
+.wrap_jcim #update table th.operation {
 	width: 11%;
+}
+
+.wrap_jcim #update table tr.quick-edit-row-post fieldset.inline-edit-col-right {
+	width: auto;
+}
+.wrap_jcim #update table tr.quick-edit-row-post fieldset.inline-edit-col-left label span.title {
+	width: 10em;	
 }
