@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.3.3
+Version: 1.3.3.1
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_3
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_3_3_1
 Text Domain: jcim
 Domain Path: /languages
 */
@@ -53,7 +53,7 @@ class JS_CSS_include_manager
 
 
 	function __construct() {
-		$this->Ver = '1.3.3';
+		$this->Ver = '1.3.3.1';
 		$this->Name = 'Js Css Include Manager';
 		$this->Dir = plugin_dir_path( __FILE__ );
 		$this->Url = plugin_dir_url( __FILE__ );
@@ -575,16 +575,18 @@ jQuery(document).ready(function($) {
 
 		$RecordField = false;
 		
-		if( !empty( $_POST["record_field"] ) ) {
-			$RecordField = strip_tags( $_POST["record_field"] );
-		}
-
-		if( !empty( $RecordField ) && $RecordField == $this->Record ) {
-			if( !empty( $_POST["create"] ) ) {
-				$this->create();
+		if( !empty( $_POST[$this->Nonces["field"]] ) ) {
+			if( !empty( $_POST["record_field"] ) ) {
+				$RecordField = strip_tags( $_POST["record_field"] );
 			}
-			if( !empty( $_POST["donate_key"] ) ) {
-				$this->DonatingCheck();
+
+			if( !empty( $RecordField ) && $RecordField == $this->Record ) {
+				if( !empty( $_POST["create"] ) ) {
+					$this->create();
+				}
+				if( !empty( $_POST["donate_key"] ) ) {
+					$this->DonatingCheck();
+				}
 			}
 		}
 	}
