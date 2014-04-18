@@ -3,7 +3,7 @@ Contributors: gqevu6bsiz
 Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_3_1
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.6.1
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: 1.3.3.1
 License: GPL2
 
