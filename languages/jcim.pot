@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Js Css Include Manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:44+0900\n"
-"PO-Revision-Date: 2013-12-16 11:48+0900\n"
+"POT-Creation-Date: 2014-09-10 17:25+0900\n"
+"PO-Revision-Date: 2014-09-10 17:25+0900\n"
 "Last-Translator: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "Language-Team: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -18,190 +18,193 @@ msgstr ""
 msgid "This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen."
 msgstr ""
 
-#: js-css-include-manager.php:205
-msgid "Back-end (Admin screen)"
-msgstr ""
-
-#: js-css-include-manager.php:205
-msgid "Front-end (Site screen)"
-msgstr ""
-
-#: js-css-include-manager.php:215
-msgid "No further condition"
-msgstr ""
-
-#: js-css-include-manager.php:216
-msgid "Only logged in user"
-msgstr ""
-
-#: js-css-include-manager.php:217
-msgid "Only manage option role have user"
-msgstr ""
-
-#: js-css-include-manager.php:218
-msgid "Only Front page( Home )"
-msgstr ""
-
-#: js-css-include-manager.php:253
-msgid "This Plugin Directory"
-msgstr ""
-
-#: js-css-include-manager.php:257
-msgid "Other Plugin Directory"
-msgstr ""
-
-#: js-css-include-manager.php:261
-#: js-css-include-manager.php:388
-msgid "The Active Theme's Directory"
-msgstr ""
-
-#: js-css-include-manager.php:265
-msgid "Other Theme's Directory"
-msgstr ""
-
-#: js-css-include-manager.php:269
-msgid "External File"
-msgstr ""
-
-#: js-css-include-manager.php:304
-#: inc/setting.php:125
-#: inc/setting.php:235
-msgid "Panel Type"
-msgstr ""
-
-#: js-css-include-manager.php:319
-#: inc/setting.php:137
-#: inc/setting.php:236
-msgid "File Type"
-msgstr ""
-
-#: js-css-include-manager.php:334
-#: inc/setting.php:149
-#: inc/setting.php:237
-msgid "Output"
-msgstr ""
-
-#: js-css-include-manager.php:349
-#: inc/setting.php:161
-#: inc/setting.php:238
-msgid "Condition"
-msgstr ""
-
-#: js-css-include-manager.php:802
-#: inc/setting.php:36
-msgid "Thank you for your donation."
-msgstr ""
-
-#: js-css-include-manager.php:817
-msgid "Thank you for considering donate."
-msgstr ""
-
-#: inc/setting.php:16
-msgid "Are you sure you want to delete?"
-msgstr ""
-
-#: inc/setting.php:42
-msgid "Donate"
-msgstr ""
-
-#: inc/setting.php:43
-msgid "You are contented with this plugin?<br />By the laws of Japan, Japan's new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation."
-msgstr ""
-
-#: inc/setting.php:50
-msgid "Features"
-msgstr ""
-
-#: inc/setting.php:51
-msgid "Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break."
-msgstr ""
-
-#: inc/setting.php:54
-msgid "The primary use of donations"
-msgstr ""
-
-#: inc/setting.php:56
-msgid "Liquidation of time and value"
-msgstr ""
-
-#: inc/setting.php:57
-msgid "Additional suggestions feature"
-msgstr ""
-
-#: inc/setting.php:58
-msgid "Maintain motivation"
-msgstr ""
-
-#: inc/setting.php:59
-msgid "Ensure time as the father of Sunday"
-msgstr ""
-
-#: inc/setting.php:63
-msgid "If you have already donated to."
-msgstr ""
-
-#: inc/setting.php:64
-msgid "Please enter the 'Donation delete key' that have been described in the 'Line Break First and End download page'."
-msgstr ""
-
-#: inc/setting.php:68
-msgid "Donation delete key"
-msgstr ""
-
-#: inc/setting.php:78
-msgid "About plugin"
-msgstr ""
-
-#: inc/setting.php:80
-msgid "Version checked"
-msgstr ""
-
-#: inc/setting.php:82
-msgid "Plugin's site"
-msgstr ""
-
-#: inc/setting.php:83
-msgid "Developer's site"
-msgstr ""
-
-#: inc/setting.php:85
-msgid "Reviews"
-msgstr ""
-
-#: inc/setting.php:93
-msgid "Useful plugins"
-msgstr ""
-
-#: inc/setting.php:96
-msgid "Customize a variety of screen management."
-msgstr ""
-
-#: inc/setting.php:98
-msgid "The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article."
-msgstr ""
-
-#: inc/setting.php:100
-msgid "Announce to display the dashboard. Change the display to a different user role."
-msgstr ""
-
-#: inc/setting.php:114
-msgid "Set a file to include:"
-msgstr ""
-
-#: inc/setting.php:176
+#: js-css-include-manager.php:152
 msgid "Description of condition is here"
 msgstr ""
 
-#: inc/setting.php:187
-#: inc/setting.php:239
+#: js-css-include-manager.php:165
+msgid "If you want to add conditions."
+msgstr ""
+
+#: js-css-include-manager.php:169
+msgid "You will be able to add the condition."
+msgstr ""
+
+#: js-css-include-manager.php:170
+msgid "Please refer to the <strong>readme.txt</strong> for more information."
+msgstr ""
+
+#: js-css-include-manager.php:227
+#: inc/class-config.php:217
+msgid "Actived Theme Directory"
+msgstr ""
+
+#: inc/class-config.php:193
+msgid "Back-end (Admin screen)"
+msgstr ""
+
+#: inc/class-config.php:194
+msgid "Front-end (Site screen)"
+msgstr ""
+
+#: inc/class-config.php:209
+msgid "This Plugin Directory"
+msgstr ""
+
+#: inc/class-config.php:213
+msgid "Other Plugin Directory"
+msgstr ""
+
+#: inc/class-config.php:221
+msgid "Other Theme Directory"
+msgstr ""
+
+#: inc/class-config.php:225
+msgid "External File"
+msgstr ""
+
+#: inc/class-config.php:244
+msgid "No further condition"
+msgstr ""
+
+#: inc/class-config.php:250
+msgid "Only logged in user"
+msgstr ""
+
+#: inc/class-config.php:256
+msgid "Only manage option role have user"
+msgstr ""
+
+#: inc/class-config.php:262
+msgid "Only Front page( Home )"
+msgstr ""
+
+#: inc/class-manager.php:225
+msgid "Include Manage Settings"
+msgstr ""
+
+#: inc/class-manager.php:226
+#: inc/other.php:13
+#: inc/other.php:32
+msgid "Other Settings"
+msgstr ""
+
+#: inc/class-plugin-info.php:140
+#: inc/information.php:3
+msgid "Thank you for your donation."
+msgstr ""
+
+#: inc/class-plugin-info.php:147
+#: inc/information.php:14
+msgid "Please consider making a donation."
+msgstr ""
+
+#: inc/information.php:16
+msgid "Thank you very much for your support."
+msgstr ""
+
+#: inc/information.php:17
+msgid "Donate"
+msgstr ""
+
+#: inc/information.php:18
+msgid "Please enter the 'Donation delete key' that have been described in the 'Line Break First and End download page'."
+msgstr ""
+
+#: inc/information.php:22
+msgid "Donation delete key"
+msgstr ""
+
+#: inc/information.php:32
+msgid "Have you want to customize?"
+msgstr ""
+
+#: inc/information.php:39
+msgid "I am good at Admin Screen Customize."
+msgstr ""
+
+#: inc/information.php:40
+msgid "Please consider the request to me if it is good."
+msgstr ""
+
+#: inc/information.php:42
+msgid "Contact"
+msgstr ""
+
+#: inc/information.php:44
+msgid "Example Customize"
+msgstr ""
+
+#: inc/information.php:49
+msgid "About plugin"
+msgstr ""
+
+#: inc/information.php:51
+msgid "Version checked"
+msgstr ""
+
+#: inc/information.php:53
+msgid "Developer's site"
+msgstr ""
+
+#: inc/information.php:55
+msgid "Reviews"
+msgstr ""
+
+#: inc/information.php:63
+msgid "Useful plugins"
+msgstr ""
+
+#: inc/information.php:66
+msgid "Customize a variety of screen management."
+msgstr ""
+
+#: inc/information.php:68
+msgid "Customize the list of the post and page. custom post type page, too. You can customize the column display items freely."
+msgstr ""
+
+#: inc/information.php:70
+msgid "Announce to display the dashboard. Change the display to a different user role."
+msgstr ""
+
+#: inc/other.php:41
+#, php-format
+msgid "Please choose the minimum role that can modify %s settings."
+msgstr ""
+
+#: inc/setting.php:37
+msgid "Set a file to include:"
+msgstr ""
+
+#: inc/setting.php:44
+#: inc/setting.php:117
+msgid "Screen Type"
+msgstr ""
+
+#: inc/setting.php:48
+#: inc/setting.php:120
+msgid "File Type"
+msgstr ""
+
+#: inc/setting.php:52
+#: inc/setting.php:123
+msgid "Output"
+msgstr ""
+
+#: inc/setting.php:56
+#: inc/setting.php:126
+msgid "Condition"
+msgstr ""
+
+#: inc/setting.php:60
+#: inc/setting.php:129
 msgid "Location"
 msgstr ""
 
-#: inc/setting.php:226
-msgid "Include setting that you created."
-msgstr ""
-
-#: inc/setting.php:261
+#: inc/setting.php:85
 msgid "Not created include setting."
 msgstr ""
 
+#: inc/setting.php:99
+msgid "Include setting that you created."
+msgstr ""

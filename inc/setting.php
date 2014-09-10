@@ -1,219 +1,74 @@
 <?php
 
-// get data
-$Data = $this->get_data();
-$donatedKey = get_option( $this->Record_d );
-$nonce_v = wp_create_nonce( $this->Nonces["value"] );
+global $Jcim;
 
-// get settings
-$Settings = $this->get_settings_conf();
+$Data = $Jcim->ClassData->get_data_include_manage();
 
-// include js css
-$ReadedJs = array( 'jquery' , 'jquery-ui-sortable' );
-wp_enqueue_script( $this->PageSlug ,  $this->Url . $this->PluginSlug . '.js', $ReadedJs , $this->Ver );
-wp_enqueue_style( $this->PageSlug , $this->Url . $this->PluginSlug . '.css', array() , $this->Ver );
-
-$translation_array = array( 'nonce' => $nonce_v , 'delete_cofirm' => __( 'Are you sure you want to delete?' , $this->ltd ) , 'ajax_url' => admin_url( 'admin-ajax.php' ) , 'UPFN' => 'Y' );
-wp_localize_script( $this->PageSlug , $this->PageSlug , $translation_array );
-
-$class = "";
-if( get_option( $this->Record_dw ) ) $class .= ' full-width';
+$screens = $Jcim->ClassConfig->get_screen_types();
+$file_types = $Jcim->ClassConfig->get_file_types();
+$outputs = $Jcim->ClassConfig->get_output_types();
+$conditions = $Jcim->ClassConfig->get_conditions();
+$locations = $Jcim->ClassConfig->get_locations();
 ?>
-<div class="wrap wrap_<?php echo $this->ltd; ?>">
-	<div class="icon32" id="icon-options-general"></div>
-	<?php echo $this->Msg; ?>
-	<h2><?php echo $this->Name; ?></h2>
+<div class="wrap">
+	<div class="icon32" id="icon-tools"></div>
+	<h2><?php echo $Jcim->Plugin['name']; ?></h2>
+	<?php $this->print_nav_tab_wrapper(); ?>
 
+	<?php $class = $Jcim->ClassInfo->get_width_class(); ?>
 	<div class="metabox-holder columns-2 <?php echo $class; ?>">
 
 		<div id="postbox-container-1" class="postbox-container">
 
-			<div id="about_plugin">
-	
-				<?php if( $donatedKey == $this->DonateKey ) : ?>
-
-					<div class="toggle-plugin"><span></span><a href="#"><?php echo esc_html__( 'Collapse' ); ?></a></div>
-					<p class="description"><?php _e( 'Thank you for your donation.' , $this->ltd ); ?></p>
-
-				<?php else: ?>
-
-					<div class="stuffbox" id="donationbox">
-						<div class="inside">
-							<p style="color: #FFFFFF; font-size: 20px;"><?php _e( 'Donate' , $this->ltd ); ?></p>
-							<p style="color: #FFFFFF;"><?php _e( 'You are contented with this plugin?<br />By the laws of Japan, Japan\'s new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation.' , $this->ltd ); ?></p>
-							<p>&nbsp;</p>
-							<p style="text-align: center;">
-								<a href="<?php echo $this->AuthorUrl; ?>line-break-first-and-end/?utm_source=use_plugin&utm_medium=donate&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" class="button-primary" target="_blank">Line Break First and End</a>
-							</p>
-							<p>&nbsp;</p>
-							<div class="donation_memo">
-								<p><strong><?php _e( 'Features' , $this->ltd ); ?></strong></p>
-								<p><?php _e( 'Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break.' , $this->ltd ); ?></p>
-							</div>
-							<div class="donation_memo">
-								<p><strong><?php _e( 'The primary use of donations' , $this->ltd ); ?></strong></p>
-								<ul>
-									<li>- <?php _e( 'Liquidation of time and value' , $this->ltd ); ?></li>
-									<li>- <?php _e( 'Additional suggestions feature' , $this->ltd ); ?></li>
-									<li>- <?php _e( 'Maintain motivation' , $this->ltd ); ?></li>
-									<li>- <?php _e( 'Ensure time as the father of Sunday' , $this->ltd ); ?></li>
-								</ul>
-							</div>
-							<form id="donation_form" class="jcim_form" method="post" action="<?php echo remove_query_arg( $this->MsgQ ); ?>">
-								<p style="color: #FFFFFF;"><?php _e( 'If you have already donated to.' , $this->ltd ); ?></p>
-								<p style="color: #FFFFFF;"><?php _e( 'Please enter the \'Donation delete key\' that have been described in the \'Line Break First and End download page\'.' , $this->ltd ); ?></p>
-								<input type="hidden" name="<?php echo $this->UPFN; ?>" value="Y" />
-								<?php wp_nonce_field( $this->Nonces["value"] , $this->Nonces["field"] ); ?>
-								<input type="hidden" name="record_field" value="<?php echo $this->Record; ?>" />
-								<p style="color: #FFFFFF;"><label for="donate_key"><?php _e( 'Donation delete key' , $this->ltd ); ?></label></p>
-								<input type="text" name="donate_key" id="donate_key" value="" class="legular-text" />
-								<input type="submit" class="button-primary" name="update" value="<?php _e( 'Submit' ); ?>" />
-							</form>
-						</div>
-					</div>
+			<?php include_once $Jcim->Plugin['dir'] . 'inc/information.php'; ?>
 		
-			<?php endif; ?>
-			
-				<div class="stuffbox" id="aboutbox">
-					<h3><span class="hndle"><?php _e( 'About plugin' , $this->ltd ); ?></span></h3>
-					<div class="inside">
-						<p><?php _e( 'Version checked' , $this->ltd ); ?> : 3.6.1 - 3.8</p>
-						<ul>
-							<li><a href="http://wordpress.org/plugins/<?php echo $this->PluginSlug; ?>" target="_blank"><?php _e( 'Plugin\'s site' , $this->ltd ); ?></a></li>
-							<li><a href="<?php echo $this->AuthorUrl; ?>?utm_source=use_plugin&utm_medium=side&utm_content=<?php echo $this->ltd; ?>&utm_campaign=<?php echo str_replace( '.' , '_' , $this->Ver ); ?>" target="_blank"><?php _e( 'Developer\'s site' , $this->ltd ); ?></a></li>
-							<li><a href="http://wordpress.org/support/plugin/<?php echo $this->PluginSlug; ?>" target="_blank"><?php _e( 'Support Forums' ); ?></a></li>
-							<li><a href="http://wordpress.org/support/view/plugin-reviews/<?php echo $this->PluginSlug; ?>" target="_blank"><?php _e( 'Reviews' , $this->ltd ); ?></a></li>
-							<li><a href="https://twitter.com/gqevu6bsiz" target="_blank">twitter</a></li>
-							<li><a href="http://www.facebook.com/pages/Gqevu6bsiz/499584376749601" target="_blank">facebook</a></li>
-						</ul>
-					</div>
-				</div>
-		
-				<div class="stuffbox" id="usefulbox">
-					<h3><span class="hndle"><?php _e( 'Useful plugins' , $this->ltd ); ?></span></h3>
-					<div class="inside">
-						<p><strong><a href="http://wordpress.org/extend/plugins/wp-admin-ui-customize/" target="_blank">WP Admin UI Customize</a></strong></p>
-						<p class="description"><?php _e( 'Customize a variety of screen management.' , $this->ltd  ); ?></p>
-						<p><strong><a href="http://wordpress.org/extend/plugins/custom-options-plus-post-in/" target="_blank">Custom Options Plus Post in</a></strong></p>
-						<p class="description"><?php _e( 'The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article.' , $this->ltd  ); ?></p>
-						<p><strong><a href="http://wordpress.org/extend/plugins/announce-from-the-dashboard/" target="_blank">Announce from the Dashboard</a></strong></p>
-						<p class="description"><?php _e( 'Announce to display the dashboard. Change the display to a different user role.' , $this->ltd  ); ?></p>
-						<p>&nbsp;</p>
-					</div>
-				</div>
-
-			</div>
-
 		</div>
 
 		<div id="postbox-container-2" class="postbox-container">
 
-			<?php $type = 'create'; ?>
-			<div id="<?php echo $type; ?>">
+			<form id="<?php echo $Jcim->Plugin['ltd']; ?>_create_form" class="<?php echo $Jcim->Plugin['ltd']; ?>_form" method="post" action="<?php echo $this->get_action_link(); ?>">
+				<input type="hidden" name="<?php echo $Jcim->Plugin['form']['field']; ?>" value="Y" />
+				<?php wp_nonce_field( $Jcim->Plugin['nonces']['value'] , $Jcim->Plugin['nonces']['field'] ); ?>
+				<input type="hidden" name="record_field" value="<?php echo $Jcim->Plugin['record']['setting']; ?>" />
+				<input type="hidden" name="data[add][data_ver]" value="1" />
 
-				<h3><?php _e( 'Set a file to include:' , $this->ltd ); ?></h3>
+				<?php $mode = 'add'; ?>
+				
+				<h3><?php _e( 'Set a file to include:' , $Jcim->Plugin['ltd'] ); ?></h3>
 
-				<form id="jcim_setting" class="jcim_form" method="post" action="<?php echo remove_query_arg( $this->MsgQ ); ?>">
-					<input type="hidden" name="<?php echo $this->UPFN; ?>" value="Y" />
-					<?php wp_nonce_field( $this->Nonces["value"] , $this->Nonces["field"] ); ?>
-					<input type="hidden" name="record_field" value="<?php echo $this->Record; ?>" />
-					<input type="hidden" name="<?php echo $type; ?>[data_ver]" value="1" />
-		
+				<div id="<?php echo $mode; ?>">
+				
 					<table class="form-table">
 						<tbody>
 							<tr>
-								<th><label for="<?php echo $type; ?>_use"><?php _e( 'Panel Type' , $this->ltd ); ?></label> *</th>
-								<td>
-									<select name="<?php echo $type; ?>[use]" id="<?php echo $type; ?>_use">
-										<?php foreach( $Settings["panel_type"] as $key => $val) : ?>
-											<?php if( !empty( $val ) ) : ?>
-												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									</select>
-								</td>
+								<th><label for="<?php echo $mode; ?>_use"><?php _e( 'Screen Type' , $Jcim->Plugin['ltd'] ); ?></label> *</th>
+								<td class="use"><?php $Jcim->fields_setting( $mode , 'use' ); ?></td>
 							</tr>
 							<tr>
-								<th><label for="<?php echo $type; ?>_filetype"><?php _e( 'File Type' , $this->ltd ); ?></label> *</th>
-								<td>
-									<select name="<?php echo $type; ?>[filetype]" id="<?php echo $type; ?>_filetype">
-										<?php foreach( $Settings["file_type"] as $key => $val) : ?>
-											<?php if( !empty( $val ) ) : ?>
-												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									</select>
-								</td>
+								<th><label for="<?php echo $mode; ?>_filetype"><?php _e( 'File Type' , $Jcim->Plugin['ltd'] ); ?></label> *</th>
+								<td class="filetype"><?php $Jcim->fields_setting( $mode , 'filetype' ); ?></td>
 							</tr>
 							<tr>
-								<th><label for="<?php echo $type; ?>_output"><?php _e( 'Output' , $this->ltd ); ?></label> *</th>
-								<td>
-									<select name="<?php echo $type; ?>[output]" id="<?php echo $type; ?>_output">
-										<?php foreach( $Settings["output"] as $key => $val) : ?>
-											<?php if( !empty( $val ) ) : ?>
-												<option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									</select>
-								</td>
+								<th><label for="<?php echo $mode; ?>_output"><?php _e( 'Output' , $Jcim->Plugin['ltd'] ); ?></label></th>
+								<td class="output"><?php $Jcim->fields_setting( $mode , 'output' ); ?></td>
 							</tr>
 							<tr>
-								<th><label for="<?php echo $type; ?>_condition"><?php _e( 'Condition' , $this->ltd ); ?></label> *</th>
-								<td>
-									<select name="<?php echo $type; ?>[condition]" id="<?php echo $type; ?>condition">
-										<?php foreach( $Settings["condition"] as $key => $cond) : ?>
-											<?php if( !empty( $cond ) ) : ?>
-												<option value="<?php echo $key; ?>">
-													<?php if( empty( $cond["code"] ) ) : ?>
-														<?php echo strip_tags( $cond["desc"] ); ?>
-													<?php else: ?>
-														<?php echo strip_tags( $cond["code"] ); ?>
-													<?php endif; ?>
-												</option>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									</select>
-									<p><a href="#" class="condition_desc_show"><?php _e( 'Description of condition is here' , $this->ltd ); ?></a></p>
-									<ul class="condition_desc">
-										<?php foreach( $Settings["condition"] as $key => $cond) : ?>
-											<?php if( !empty( $cond["code"] ) && !empty( $cond["help_link"] ) ) : ?>
-												<li><code><a href="<?php echo esc_url( $cond["help_link"] ); ?>" target="_blank"><?php echo strip_tags( $cond["code"] ); ?></a></code> <span class="description"><?php echo strip_tags( $cond["desc"] ); ?></span></li>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									</ul>
-								</td>
+								<th><label for="<?php echo $mode; ?>_condition"><?php _e( 'Condition' , $Jcim->Plugin['ltd'] ); ?></label></th>
+								<td class="condition"><?php $Jcim->fields_setting( $mode , 'condition' ); ?></td>
 							</tr>
 							<tr>
-								<th><label for="<?php echo $type; ?>_location"><?php _e( 'Location' , $this->ltd ); ?></label> *</th>
-								<td>
-									<ul>
-										<?php foreach($Settings["location"] as $key => $val) : ?>
-											<?php if(!empty($val["name"])) : ?>
-												<li>
-													<label><input type="radio" class="location_radio" name="<?php echo $type; ?>[location][num]" value="<?php echo $key; ?>" /><?php echo _e($val["name"], $this->ltd ); ?></label>
-													<?php if(!empty($val["location"])) : ?>
-														<code><?php echo $val["location"]; ?></code>
-														<input type="text" name="<?php echo $type; ?>[location][name][<?php echo $key; ?>]" class="regular-text disabled" disabled="disabled" />
-													<?php else: ?>
-														<code>http://sample.com/sample.css or http://sample.com/sample.js</code>
-														<input type="text" name="<?php echo $type; ?>[location][name][<?php echo $key; ?>]" class="large-text disabled" disabled="disabled" />
-													<?php endif; ?>
-												</li>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									</ul>
-								</td>
+								<th><label for="<?php echo $mode; ?>_location"><?php _e( 'Location' , $Jcim->Plugin['ltd'] ); ?></label></th>
+								<td class="location"><?php $Jcim->fields_setting( $mode , 'location' ); ?></td>
 							</tr>
 						</tbody>
 					</table>
-				
-					<p class="submit">
-						<input type="submit" class="button-primary" name="update" value="<?php _e( 'Save' ); ?>" />
-					</p>
-						
-				</form>
-					
-			</div>
+
+					<p class="spinner"></p>
+					<?php submit_button( __( 'Save' ) ); ?>
+		
+				</div>
+	
+			</form>
 
 		</div>
 
@@ -221,48 +76,357 @@ if( get_option( $this->Record_dw ) ) $class .= ' full-width';
 
 	</div>
 
-	<div class="metabox-holder columns-1">
+	<div class="metabox-holder columns-1" id="jcim-lists">
+
+		<div class="postbox-container">
+
+			<?php if( empty( $Data ) ) : ?>
 	
-		<h3><?php _e( 'Include setting that you created.' , $this->ltd  ); ?></h3>
+				<p><strong><?php _e( 'Not created include setting.' , $Jcim->Plugin['ltd'] ); ?></strong></p>
+	
+			<?php else : ?>
 
-		<div id="update">
-		
-			<?php if( !empty( $Data ) ) : ?>
-			
-				<table cellspacing="0" class="widefat fixed">
-					<thead>
-						<tr>
-							<th class="use"><?php _e( 'Panel Type' , $this->ltd ); ?></th>
-							<th class="filetype"><?php _e( 'File Type' , $this->ltd ); ?></th>
-							<th class="output"><?php _e( 'Output', $this->ltd ); ?></th>
-							<th class="condition"><?php _e( 'Condition' , $this->ltd ); ?></th>
-							<th class="location"><?php _e( 'Location' , $this->ltd ); ?></th>
-							<th class="operation">&nbsp;</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $altCount = 0; ?>
-						<?php foreach($Data as $key => $val) : ?>
+				<?php $mode = 'update'; ?>
 
-							<?php if( $altCount == 0 ): ?>
-								<?php $altCount++; ?>
-							<?php else: ?>
-								<?php $altCount = 0; ?>
-							<?php endif; ?>
-							<?php echo $this->get_list( $key , $altCount , false ); ?>
+				<div id="<?php echo $mode; ?>">
 
-						<?php endforeach; ?>
+					<form id="<?php echo $Jcim->Plugin['ltd']; ?>_<?php echo $mode; ?>_form" class="<?php echo $Jcim->Plugin['ltd']; ?>_form" method="post" action="<?php echo $this->get_action_link(); ?>">
 
-					</tbody>
-				</table>
+						<input type="hidden" name="<?php echo $Jcim->Plugin['form']['field']; ?>" value="Y">
+						<?php wp_nonce_field( $Jcim->Plugin['nonces']['value'] , $Jcim->Plugin['nonces']['field'] ); ?>
+						<input type="hidden" name="record_field" value="<?php echo $Jcim->Plugin['record']['setting']; ?>" />
 
-			<?php else: ?>
-			
-				<p><?php _e( 'Not created include setting.' , $this->ltd  ); ?></p>
-			
+						<h3><?php _e( 'Include setting that you created.' , $Jcim->Plugin['ltd'] ); ?></h3>
+
+						<div class="tablenav top">
+							<select name="action" class="action_sel">
+								<option value=""><?php _e( 'Bulk Actions' ); ?></option>
+								<option value="delete"><?php _e( 'Delete' ); ?></option>
+							</select>
+							<input type="button" class="button-secondary action bulk" value="<?php _e( 'Apply' ); ?>" />
+						</div>
+						<table cellspacing="0" class="widefat fixed">
+							<?php $arr = array( 'thead' , 'tfoot' ); ?>
+							<?php foreach( $arr as $tag ) : ?>
+								<<?php echo $tag; ?>>
+									<tr>
+										<th class="check-column">
+											<input type="checkbox" />
+										</th>
+										<th class="use">
+											<?php _e( 'Screen Type' , $Jcim->Plugin['ltd'] ); ?>
+										</th>
+										<th class="filetype">
+											<?php _e( 'File Type' , $Jcim->Plugin['ltd'] ); ?>
+										</th>
+										<th class="output">
+											<?php _e( 'Output' , $Jcim->Plugin['ltd'] ); ?>
+										</th>
+										<th class="condition">
+											<?php _e( 'Condition' , $Jcim->Plugin['ltd'] ); ?>
+										</th>
+										<th class="location">
+											<?php _e( 'Location' , $Jcim->Plugin['ltd'] ); ?>
+										</th>
+										<th class="operation">&nbsp;</th>
+									</tr>
+								</<?php echo $tag; ?>>
+							<?php endforeach; ?>
+							<tbody>
+								
+								<?php $altClass = 'alternate'; ?>
+								<?php foreach( $Data as $key => $include_manage ) : ?>
+								
+									<?php if( !empty( $altClass ) ): ?>
+										<?php $altClass = ''; ?>
+									<?php else: ?>
+										<?php $altClass = 'alternate'; ?>
+									<?php endif; ?>
+
+									<?php $data_ver = intval( $include_manage['data_ver'] ); ?>
+
+									<tr id="tr_<?php echo $key; ?>" class="<?php echo $Jcim->Plugin['ltd']; ?>_list_tr <?php echo $altClass; ?>">
+										<th class="check-column">
+											<input type="checkbox" name="data[update][<?php echo $key; ?>][id]" value="<?php echo $key; ?>" />
+											<input type="hidden" name="data_ver" value="<?php echo $data_ver; ?>" />
+										</th>
+										<td class="use">
+											<?php $use = intval( $include_manage['use'] ); ?>
+											<div class="edit">
+												<?php $Jcim->fields_setting( $mode , 'use' , $use , $key ); ?>
+											</div>
+											<div class="toggle use">
+												<p><?php echo $screens[$use]; ?></p>
+											</div>
+										</td>
+										<td class="filetype">
+											<?php $filetype = intval( $include_manage['filetype'] ); ?>
+											<div class="edit">
+												<?php $Jcim->fields_setting( $mode , 'filetype' , $filetype , $key ); ?>
+											</div>
+											<div class="toggle filetype">
+												<p><?php echo $file_types[$filetype]; ?></p>
+											</div>
+										</td>
+										<td class="output">
+											<?php $output = intval( $include_manage['output'] ); ?>
+											<div class="edit">
+												<?php $Jcim->fields_setting( $mode , 'output' , $output , $key ); ?>
+											</div>
+											<div class="toggle output">
+												<p><?php echo $outputs[$output]; ?></p>
+											</div>
+										</td>
+										<td class="condition">
+											<?php $condition = intval( $include_manage['condition'] ); ?>
+											<div class="edit">
+												<?php $Jcim->fields_setting( $mode , 'condition' , $condition , $key ); ?>
+											</div>
+											<div class="toggle condition">
+												<p>
+													<?php if( !empty( $conditions[$condition]['code'] ) ) : ?>
+														<code><?php echo $conditions[$condition]['code']; ?></code>
+													<?php endif; ?>
+													<?php if( !empty( $conditions[$condition]['desc'] ) ) : ?>
+														<p class="description"><?php echo $conditions[$condition]['desc']; ?></p>
+													<?php endif; ?>
+												</p>
+											</div>
+										</td>
+										<td class="location">
+											<?php $location_num = intval( $include_manage['location']['num'] ); ?>
+											<?php $location_name = strip_tags( $include_manage['location']['name'] ); ?>
+											<div class="edit">
+												<?php $Jcim->fields_setting( $mode , 'location' , array( 'num' => $location_num , 'name' => $location_name , 'ver' => $data_ver ) , $key ); ?>
+											</div>
+											<div class="toggle location">
+												<?php $location = $Jcim->convert_location( $location_num , $data_ver , $locations[$location_num] ); ?>
+												<?php $request_file = $location['location'] . $location_name; ?>
+												<p>
+													<a href="<?php echo esc_html( $request_file ); ?>" target="_blank"><?php echo esc_html( $request_file ); ?></a>
+												</p>
+												<code></code>
+												<span class="spinner"></span>
+											</div>
+										</td>
+										<td class="operation">
+											<ul class="toggle menu">
+												<li><a class="menu_edit" href="javascript:void(0);"><?php _e( 'Edit' ); ?></a> | </li>
+												<li><a class="delete" href="<?php echo admin_url( 'options-general.php?page=' . $Jcim->Plugin['page_slug'] ); ?>" id="delete_<?php echo $key; ?>"><?php _e('Delete'); ?></a></li>
+											</ul>
+											<div class="edit">
+												<span class="spinner"></span>
+												<?php submit_button( __( 'Save' ) ); ?>
+											</div>
+										</td>
+									</tr>
+								
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+						<div class="tablenav top">
+							<select name="action2" class="action_sel">
+								<option value=""><?php _e( 'Bulk Actions' ); ?></option>
+								<option value="delete"><?php _e( 'Delete' ); ?></option>
+							</select>
+							<input type="button" class="button-secondary action bulk" value="<?php _e( 'Apply' ); ?>" />
+						</div>
+					</form>
+				</div>
+
+				<div id="<?php echo $Jcim->Plugin['ltd']; ?>_confirm">
+					<div id="ConfirmSt">
+						<p><?php echo sprintf( __( 'You are about to delete <strong>%s</strong>.' ) , '' ); ?></p>
+						<a class="button-secondary" id="cancelbtn" href="javascript:void(0);"><?php _e( 'Cancel' ); ?></a>
+						<a class="button-secondary" id="deletebtn" href="javascript:void(0);" title=""><?php _e( 'Continue' ); ?></a>
+					</div>
+				</div>
+				
+				<div id="<?php echo $Jcim->Plugin['ltd']; ?>_delete">
+					<form id="<?php echo $Jcim->Plugin['ltd']; ?>_delete_form" class="<?php echo $Jcim->Plugin['ltd']; ?>_form" method="post" action="<?php echo $this->get_action_link(); ?>">
+						<input type="hidden" name="<?php echo $Jcim->Plugin['form']['field']; ?>" value="Y">
+						<?php wp_nonce_field( $Jcim->Plugin['nonces']['value'] , $Jcim->Plugin['nonces']['field'] ); ?>
+						<input type="hidden" name="record_field" value="<?php echo $Jcim->Plugin['record']['setting']; ?>" />
+						<input type="hidden" name="action" value="delete" />
+					</form>
+				</div>
+
 			<?php endif; ?>
+
 		</div>
-	
+
 	</div>
 
 </div>
+
+<script>
+jQuery(document).ready(function($) {
+	
+	$('#add input[type=submit]').on('click', function( ev ) {
+
+		$(ev.target).parent().parent().find('.spinner').show();
+
+	});
+
+	$('#update table tbody td.operation .edit input[type=submit]').on('click', function( ev ) {
+
+		$(ev.target).parent().parent().find('.spinner').show();
+
+	});
+
+	$(document).on('click', 'input.location_radio', function( ev ) {
+
+		var $RadioList = $(this).parent().parent().parent();
+		$RadioList.children('li').each( function( index , el ) {
+			val = $(el).find('input.location_radio').val();
+			if( val == $(ev.target).val() ) {
+				$(el).find('input.location_name').removeClass('disabled');
+				$(el).find('input.location_name').prop('disabled', false);
+			} else {
+				$(el).find('input.location_name').addClass('disabled');
+				$(el).find('input.location_name').prop('disabled', true);
+			}
+		});
+
+	});
+
+	$(document).on('click', '.condition_desc_show', function( ev ) {
+
+		$(ev.target).parent().parent().find('ul.condition_desc').slideToggle();
+		return false;
+
+	});
+
+	$(document).on('click', '.condition_add_desc_show', function( ev ) {
+
+		$(ev.target).parent().parent().find('.condition_add_desc').slideToggle();
+		return false;
+
+	});
+
+	$(document).on('click', '#update table td.operation .menu a.menu_edit', function( ev ) {
+
+		var TR = $(ev.target).parent().parent().parent().parent();
+		TR.addClass('collapse');
+		
+		return false;
+
+	});
+
+	$(document).on('click', '#update table tbody tr td.operation .menu a.delete', function( ev ) {
+
+		$('#jcim_delete_form').find('.delete_id').remove();
+		var TR = $(ev.target).parent().parent().parent().parent();
+		var URL = TR.find('td.location .toggle p a').text();
+		var ID = $(ev.target).prop('id').replace('delete_', '');
+		var delete_list = {}
+		delete_list['tr_' + ID] = ID;
+		
+		delete_confirm_show( URL , delete_list );
+		return false;
+
+	});
+
+	function delete_confirm_show( html , list ) {
+
+		$('#jcim_delete_form .delete_id').remove();
+		$('#jcim_confirm p strong').html( html );
+		for(var key in list) {
+			$('#jcim_delete_form').append('<input type="hidden" name="data[delete][' + list[key] + ']" class="delete_id" value="1" />');
+		}
+		tb_show( jcim.msg.delete_confirm , '#TB_inline?height=200&width=300&inlineId=jcim_confirm', '' );
+		return false;
+
+	}
+
+	$(document).on('click', '#ConfirmSt a#cancelbtn', function( ev ) {
+
+		$('#jcim_delete_form').find('.delete_id').remove();
+		$(ev.target).parent().find('p strong').html('');
+		$('#jcim_confirm').find('p strong').html('');
+
+		tb_remove();
+		return false;
+
+	});
+
+	$(document).on('click', '#ConfirmSt a#deletebtn', function( ev ) {
+
+		$('#jcim_delete_form').submit();
+		return false;
+
+	});
+
+	$(document).on('click', '#update .tablenav input.bulk', function( ev ) {
+		
+		var Action = $(ev.target).parent().find('select.action_sel option:selected').val();
+
+		if( Action != "" ) {
+			
+			var del_check = false;
+			var del_list = {};
+
+			$(document).find('#update table tbody tr.jcim_list_tr').each( function( key , el ) {
+
+				var TR = $(el);
+				var $Checkbox = TR.find('th.check-column input[type=checkbox]');
+				var checked = $Checkbox.prop('checked');
+				if( checked ) {
+					del_list[TR.prop('id')] = $Checkbox.val();
+					del_check = true;
+				}
+
+			});
+			
+			if( del_check ) {
+				var Html = '<ul>';
+				for(var id in del_list) {
+					Html += '<li>' + $(document).find('#update table tbody tr#' + id + ' td.location .toggle p a').text() + '</li>';
+				}
+				Html += '</ul>';
+
+				delete_confirm_show( Html , del_list );
+				return false;
+			}
+
+		}
+
+	});
+	
+	$('#update table tbody tr').each( function( index , el ) {
+		
+		var URL = $(el).find('td.location .toggle p a').prop('href');
+		$(el).find('td.location .toggle .spinner').show();
+
+		var PostData = {
+			action: 'jcim_get_load_header',
+			<?php echo $Jcim->Plugin['nonces']['field']; ?>: '<?php echo wp_create_nonce( $Jcim->Plugin['nonces']['value'] ); ?>',
+			data: {
+				file_url: URL
+			}
+		};
+		$.post( ajaxurl , PostData , function( response ) {
+			
+			if( typeof( response ) == 'object' && response.success ) {
+
+				if( response.data.code ) {
+					
+					$(el).find('td.location .toggle code').html( response.data.code );
+					
+				} else {
+					
+					$(el).find('td.location .toggle code').hide();
+					
+				}
+
+			}
+			
+			$(el).find('td.location .toggle .spinner').hide();
+			return false;
+
+		});
+		
+	});
+
+});
+</script>

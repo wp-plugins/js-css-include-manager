@@ -1,0 +1,163 @@
+.columns-2.jcim {
+	margin-right: 360px;
+}
+.columns-2.jcim #postbox-container-1 {
+	float: right;
+	width: 340px;
+	margin-right: -360px;
+}
+.columns-2.jcim #postbox-container-2 {
+	width: 100%;
+}
+
+.columns-2.jcim.full-width {
+	margin-right: 120px;
+}
+.columns-2.jcim.full-width #postbox-container-1 {
+	width: 80px;
+	margin-right: -100px;
+}
+.columns-2.jcim .postbox-container .postbox .hndle {
+	cursor: default; 	
+}
+.columns-2.jcim.full-width #postbox-container-1 .stuffbox {
+	display: none;
+}
+.columns-2.jcim.full-width #postbox-container-1 .donated_message {
+	display: none;
+}
+.columns-2.jcim .condition_desc,
+.columns-1#jcim-lists .condition_desc,
+.columns-2.jcim .condition_add_desc,
+.columns-1#jcim-lists .condition_add_desc {
+	display: none;
+}
+
+
+
+.columns-2.jcim #add table td li {
+	margin-bottom: 20px;
+}
+.columns-2.jcim #add table td.location li code {
+	display: block;
+}
+.columns-2.jcim #add table td .condition_desc,
+.columns-2.jcim #add table td .condition_add_desc {
+	background: #fff;
+	padding: 8px 12px;
+	border: 1px solid #e5e5e5;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.04);
+	box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+.columns-1#jcim-lists table thead th.check-column {
+	width: 2.8em;
+}
+.columns-1#jcim-lists table thead th.use {
+	width: 11%;
+}
+.columns-1#jcim-lists table thead th.filetype {
+	width: 13%;
+}
+.columns-1#jcim-lists table thead th.output {
+	width: 12%;
+}
+.columns-1#jcim-lists table thead th.location {
+	width: 25%;
+}
+.columns-1#jcim-lists table thead th.operation {
+	width: 10%;
+}
+.columns-1#jcim-lists #update tr.collapse .toggle {
+	display: none;
+}
+.columns-1#jcim-lists #update tr.collapse .edit {
+	display: block;
+}
+.columns-1#jcim-lists table tbody tr td.location label {
+	display: block;
+}
+.columns-1#jcim-lists table tbody tr td .edit {
+	display: none;
+}
+.columns-1#jcim-lists table tbody tr td .menu li {
+	display: inline;
+}
+.columns-1#jcim-lists table tbody tr td.operation .spinner {
+	float: right;
+	margin-top: 22px;
+}
+.columns-1#jcim-lists table tbody tr td.condition ul li,
+.columns-1#jcim-lists table tbody tr td.location ul li {
+	margin-bottom: 14px;
+}
+.columns-1#jcim-lists table tbody tr td.condition .edit ul li .description {
+	display: block;
+}
+.columns-1#jcim-lists table tbody tr td.location .toggle .spinner {
+	float: left;
+}
+
+
+
+.columns-1#jcim-lists #jcim_confirm,
+.columns-1#jcim-lists #jcim_delete {
+	display: none;
+}
+
+
+
+.jcim .toggle-width {
+	margin-bottom: 20px;
+}
+.jcim .toggle-width .collapse-sidebar {
+	left: 0;
+	z-index: 50;
+	display: block;
+	width: 19px;
+	height: 19px;
+	margin-left: 15px;
+	padding: 0;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	color: #777;
+	text-decoration: none;
+	border: 0 none;
+	position: relative;
+}
+.jcim .toggle-width .collapse-sidebar .collapse-sidebar-arrow {
+	position: static;
+	margin-top: 0;
+	margin-left: 0;
+	display: block;
+	width: auto;
+	height: auto;
+	background: 0 0;
+}
+.jcim .toggle-width .collapse-sidebar .collapse-sidebar-arrow:before {
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	float: left;
+	content: "\f148";
+	background: #eee;
+	font: 400 20px/1 dashicons;
+	speak: none;
+	display: block;
+	padding: 0;
+	text-indent: 0;
+	text-align: center;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-decoration: none!important;
+	transform: rotate(180deg);
+}
+.columns-2.jcim.full-width .toggle-width .collapse-sidebar .collapse-sidebar-arrow:before {
+	transform: rotate(0deg);
+}
+.columns-2.jcim .toggle-width .collapse-sidebar .collapse-sidebar-label {
+	position: absolute;
+	left: 100%;
+	line-height: 20px;
+	margin-left: 10px;
+}
+

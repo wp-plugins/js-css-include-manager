@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_3_3_1
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_4
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.6.1
-Tested up to: 3.9
-Stable tag: 1.3.3.1
+Tested up to: 4.0
+Stable tag: 1.4
 License: GPL2
 
 This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
@@ -37,7 +37,7 @@ function my_conditions( ) {
 			"code" => "is_admin",
 			"val" => "",
 			"desc" => "Only admin screen",
-			"help_link" => "http://codex.wordpress.org/Function_Reference/is_admin"
+			"help_link" => ""
 		),
 	);
 	return $conditions;
@@ -63,6 +63,13 @@ function my_conditions( ) {
 3. Conditions after added of settins interface
 
 == Changelog ==
+
+= 1.4 =
+* Added: Support to Multisite.
+* Added: Allows the change of setting user role.
+* Updated: Organize sorce files.
+* Updated: Delete how to update in ajax.
+* Updated: Strinct condition check.
 
 = 1.3.3.1 =
 * Fixed: Data update way.

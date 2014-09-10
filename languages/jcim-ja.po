@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Js Css Include Manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-16 09:44+0900\n"
-"PO-Revision-Date: 2013-12-16 11:48+0900\n"
+"POT-Creation-Date: 2014-09-10 17:25+0900\n"
+"PO-Revision-Date: 2014-09-10 17:46+0900\n"
 "Last-Translator: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "Language-Team: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -19,191 +19,196 @@ msgstr ""
 
 #: js-css-include-manager.php:4
 msgid "This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen."
-msgstr "読み込みファイル管理をする為のプラグインです。管理画面だけのファイル管理設定。サイトだけのファイル管理設定も。"
+msgstr "サイト内のJavascriptファイル,CSSファイルの管理をするプラグインです。管理画面だけ、フロントエンド（サイト）だけのファイル管理設定など様々な設定ができます。"
 
-#: js-css-include-manager.php:205
-msgid "Back-end (Admin screen)"
-msgstr "管理画面"
-
-#: js-css-include-manager.php:205
-msgid "Front-end (Site screen)"
-msgstr "サイト画面"
-
-#: js-css-include-manager.php:215
-msgid "No further condition"
-msgstr "指定しない"
-
-#: js-css-include-manager.php:216
-msgid "Only logged in user"
-msgstr "ログインユーザーのみ"
-
-#: js-css-include-manager.php:217
-msgid "Only manage option role have user"
-msgstr "一般設定を変更する権限のあるユーザーのみ"
-
-#: js-css-include-manager.php:218
-msgid "Only Front page( Home )"
-msgstr "ホームのみ"
-
-#: js-css-include-manager.php:253
-msgid "This Plugin Directory"
-msgstr "このプラグインのディレクトリ"
-
-#: js-css-include-manager.php:257
-msgid "Other Plugin Directory"
-msgstr "他のプラグインのディレクトリ"
-
-#: js-css-include-manager.php:261
-#: js-css-include-manager.php:388
-msgid "The Active Theme's Directory"
-msgstr "現在の選択テーマディレクトリ"
-
-#: js-css-include-manager.php:265
-msgid "Other Theme's Directory"
-msgstr "他のテーマディレクトリ"
-
-#: js-css-include-manager.php:269
-msgid "External File"
-msgstr "外部ファイル"
-
-#: js-css-include-manager.php:304
-#: inc/setting.php:125
-#: inc/setting.php:235
-msgid "Panel Type"
-msgstr "画面の種類"
-
-#: js-css-include-manager.php:319
-#: inc/setting.php:137
-#: inc/setting.php:236
-msgid "File Type"
-msgstr "ファイルの種類"
-
-#: js-css-include-manager.php:334
-#: inc/setting.php:149
-#: inc/setting.php:237
-msgid "Output"
-msgstr "出力先"
-
-#: js-css-include-manager.php:349
-#: inc/setting.php:161
-#: inc/setting.php:238
-msgid "Condition"
-msgstr "条件"
-
-#: js-css-include-manager.php:802
-#: inc/setting.php:36
-msgid "Thank you for your donation."
-msgstr "寄付いただきありがとうございます。"
-
-#: js-css-include-manager.php:817
-msgid "Thank you for considering donate."
-msgstr "寄付のご検討宜しくお願いします。"
-
-#: inc/setting.php:16
-msgid "Are you sure you want to delete?"
-msgstr "本当に削除してもよろしいですか？"
-
-#: inc/setting.php:42
-msgid "Donate"
-msgstr "寄付について"
-
-#: inc/setting.php:43
-msgid "You are contented with this plugin?<br />By the laws of Japan, Japan's new paypal user can not make a donation button.<br />So i would like you to buy this plugin as the replacement for the donation."
-msgstr "このプラグインを使って満足できましたか？<br />日本の法律では、日本の新PayPalユーザーは寄付ボタンを作成することはできません。<br />なので寄付の代わりとしてこのプラグインを購入して欲しいです。"
-
-#: inc/setting.php:50
-msgid "Features"
-msgstr "機能について"
-
-#: inc/setting.php:51
-msgid "Line Break First and End plugin is In the visual editor TinyMCE, It is a plugin that will help when you will not be able to enter a line break."
-msgstr "Line Break First and Endプラグインは、TinyMCEのビジュアルエディタで、改行を入力することが出来なくなった時に便利なプラグインです。"
-
-#: inc/setting.php:54
-msgid "The primary use of donations"
-msgstr "寄付の主な使用目的"
-
-#: inc/setting.php:56
-msgid "Liquidation of time and value"
-msgstr "時間と価値の清算"
-
-#: inc/setting.php:57
-msgid "Additional suggestions feature"
-msgstr "機能提案の追加"
-
-#: inc/setting.php:58
-msgid "Maintain motivation"
-msgstr "モチベーション維持"
-
-#: inc/setting.php:59
-msgid "Ensure time as the father of Sunday"
-msgstr "日曜日の父親としての時間確保"
-
-#: inc/setting.php:63
-msgid "If you have already donated to."
-msgstr "寄付済みの方へ。"
-
-#: inc/setting.php:64
-msgid "Please enter the 'Donation delete key' that have been described in the 'Line Break First and End download page'."
-msgstr "'Line Break First and End ダウンロードページ'に記載されている'寄付削除キー'を入力してください。"
-
-#: inc/setting.php:68
-msgid "Donation delete key"
-msgstr "寄付メッセージ削除キー"
-
-#: inc/setting.php:78
-msgid "About plugin"
-msgstr "プラグインについて"
-
-#: inc/setting.php:80
-msgid "Version checked"
-msgstr "動作確認済み"
-
-#: inc/setting.php:82
-msgid "Plugin's site"
-msgstr "プラグインのサイト"
-
-#: inc/setting.php:83
-msgid "Developer's site"
-msgstr "開発者のサイト"
-
-#: inc/setting.php:85
-msgid "Reviews"
-msgstr "レビュー"
-
-#: inc/setting.php:93
-msgid "Useful plugins"
-msgstr "便利なプラグイン"
-
-#: inc/setting.php:96
-msgid "Customize a variety of screen management."
-msgstr "管理画面の様々なカスタマイズ"
-
-#: inc/setting.php:98
-msgid "The plugin that allows you to add the value of the options. Option value that you have created, can be used in addition to the template tag, Short code can be used in the body of the article."
-msgstr "オプション値作成プラグインです。作成したオプション値は、ショートコードとして記事に、テンプレートタグとしても使用できます。"
-
-#: inc/setting.php:100
-msgid "Announce to display the dashboard. Change the display to a different user role."
-msgstr "ダッシュボードにお知らせを表示します。ユーザーの権限ごとに表示を変更できます。"
-
-#: inc/setting.php:114
-msgid "Set a file to include:"
-msgstr "読み込みファイルを設定:"
-
-#: inc/setting.php:176
+#: js-css-include-manager.php:152
 msgid "Description of condition is here"
 msgstr "条件の説明はこちら"
 
-#: inc/setting.php:187
-#: inc/setting.php:239
+#: js-css-include-manager.php:165
+msgid "If you want to add conditions."
+msgstr "条件を追加したい場合"
+
+#: js-css-include-manager.php:169
+msgid "You will be able to add the condition."
+msgstr "条件を追加することができます。"
+
+#: js-css-include-manager.php:170
+msgid "Please refer to the <strong>readme.txt</strong> for more information."
+msgstr "詳しい使い方は<strong>readme.txt</strong> ファイルを参照してください。"
+
+#: js-css-include-manager.php:227
+#: inc/class-config.php:217
+msgid "Actived Theme Directory"
+msgstr "有効なテーマディレクトリ"
+
+#: inc/class-config.php:193
+msgid "Back-end (Admin screen)"
+msgstr "管理画面"
+
+#: inc/class-config.php:194
+msgid "Front-end (Site screen)"
+msgstr "サイト（フロントエンド）"
+
+#: inc/class-config.php:209
+msgid "This Plugin Directory"
+msgstr "このプラグインディレクトリ"
+
+#: inc/class-config.php:213
+msgid "Other Plugin Directory"
+msgstr "その他のプラグインディレクトリ"
+
+#: inc/class-config.php:221
+msgid "Other Theme Directory"
+msgstr "その他のテーマディレクトリ"
+
+#: inc/class-config.php:225
+msgid "External File"
+msgstr "外部ファイル"
+
+#: inc/class-config.php:244
+msgid "No further condition"
+msgstr "条件を設定しない"
+
+#: inc/class-config.php:250
+msgid "Only logged in user"
+msgstr "ログイン済みユーザーのみ"
+
+#: inc/class-config.php:256
+msgid "Only manage option role have user"
+msgstr "設定変更の権限を持っているユーザーのみ"
+
+#: inc/class-config.php:262
+msgid "Only Front page( Home )"
+msgstr "ホーム（フロントエンド）のみ"
+
+#: inc/class-manager.php:225
+msgid "Include Manage Settings"
+msgstr "ファイル管理設定"
+
+#: inc/class-manager.php:226
+#: inc/other.php:13
+#: inc/other.php:32
+msgid "Other Settings"
+msgstr "その他の設定"
+
+#: inc/class-plugin-info.php:140
+#: inc/information.php:3
+msgid "Thank you for your donation."
+msgstr "寄付いただきありがとうございます。"
+
+#: inc/class-plugin-info.php:147
+#: inc/information.php:14
+msgid "Please consider making a donation."
+msgstr "宜しければ寄付のご検討をお願いします。"
+
+#: inc/information.php:16
+msgid "Thank you very much for your support."
+msgstr "あなたの支援をよろしくお願いします。"
+
+#: inc/information.php:17
+msgid "Donate"
+msgstr "寄付へ"
+
+#: inc/information.php:18
+msgid "Please enter the 'Donation delete key' that have been described in the 'Line Break First and End download page'."
+msgstr "'Line Break First and End ダウンロードページ' に記載されていた'寄付削除キー'を入力して、寄付メッセージを削除できます。"
+
+#: inc/information.php:22
+msgid "Donation delete key"
+msgstr "寄付メッセージ削除キー"
+
+#: inc/information.php:32
+msgid "Have you want to customize?"
+msgstr "何かカスタマイズしたい事はありますか？"
+
+#: inc/information.php:39
+msgid "I am good at Admin Screen Customize."
+msgstr "私は管理画面のカスタマイズを得意とします。"
+
+#: inc/information.php:40
+msgid "Please consider the request to me if it is good."
+msgstr "このプラグインに満足できたら寄付のご検討を宜しくお願いします。"
+
+#: inc/information.php:42
+msgid "Contact"
+msgstr "お問い合わせ"
+
+#: inc/information.php:44
+msgid "Example Customize"
+msgstr "カスタマイズ例"
+
+#: inc/information.php:49
+msgid "About plugin"
+msgstr "プラグインについて"
+
+#: inc/information.php:51
+msgid "Version checked"
+msgstr "動作確認済み"
+
+#: inc/information.php:53
+msgid "Developer's site"
+msgstr "開発者のサイト"
+
+#: inc/information.php:55
+msgid "Reviews"
+msgstr "レビュー"
+
+#: inc/information.php:63
+msgid "Useful plugins"
+msgstr "便利なプラグイン"
+
+#: inc/information.php:66
+msgid "Customize a variety of screen management."
+msgstr "管理画面の様々なカスタマイズ"
+
+#: inc/information.php:68
+msgid "Customize the list of the post and page. custom post type page, too. You can customize the column display items freely."
+msgstr "投稿と固定ページ一覧をカスタマイズします。カスタム投稿タイプも。カラム一覧を自由にカスタマイズできます。"
+
+#: inc/information.php:70
+msgid "Announce to display the dashboard. Change the display to a different user role."
+msgstr "ダッシュボードにお知らせを表示します。ユーザーの権限ごとに表示を変更できます。"
+
+#: inc/other.php:41
+#, php-format
+msgid "Please choose the minimum role that can modify %s settings."
+msgstr "%s の設定ができる最小限の権限を選択してください。"
+
+#: inc/setting.php:37
+msgid "Set a file to include:"
+msgstr "ファイルの読み込み設定"
+
+#: inc/setting.php:44
+#: inc/setting.php:117
+msgid "Screen Type"
+msgstr "読み込む画面"
+
+#: inc/setting.php:48
+#: inc/setting.php:120
+msgid "File Type"
+msgstr "ファイルの種類"
+
+#: inc/setting.php:52
+#: inc/setting.php:123
+msgid "Output"
+msgstr "出力場所"
+
+#: inc/setting.php:56
+#: inc/setting.php:126
+msgid "Condition"
+msgstr "読み込み条件"
+
+#: inc/setting.php:60
+#: inc/setting.php:129
 msgid "Location"
-msgstr "読み込み先"
+msgstr "ファイルの場所"
 
-#: inc/setting.php:226
-msgid "Include setting that you created."
-msgstr "作成した読み込み設定"
-
-#: inc/setting.php:261
+#: inc/setting.php:85
 msgid "Not created include setting."
-msgstr "作成された読み込み設定はありません。"
+msgstr "読み込み設定がありません。"
+
+#: inc/setting.php:99
+msgid "Include setting that you created."
+msgstr "作成済みの読み込み設定"
+
