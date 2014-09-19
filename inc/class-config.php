@@ -135,11 +135,13 @@ class Jcim_Config
 		
 		$check_plugins = array();
 		
-		foreach( $check_plugins as $name => $base_name ) {
-			if( is_plugin_active( $base_name ) )
-				$Jcim->ThirdParty[$name] = true;
+		if( !empty( $check_plugins ) ) {
+			foreach( $check_plugins as $name => $base_name ) {
+				if( is_plugin_active( $base_name ) )
+					$Jcim->ThirdParty[$name] = true;
+			}
 		}
-		
+
 	}
 
 	function get_all_user_roles() {
