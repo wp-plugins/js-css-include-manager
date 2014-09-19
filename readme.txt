@@ -1,10 +1,10 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_4
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_4_1
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.6.1
 Tested up to: 4.0
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPL2
 
 This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
@@ -63,6 +63,10 @@ function my_conditions( ) {
 3. Conditions after added of settins interface
 
 == Changelog ==
+
+= 1.4.1 =
+* Fixed: Small bug fixes.
+* Fixed: Remove useless globals.
 
 = 1.4 =
 * Added: Support to Multisite.

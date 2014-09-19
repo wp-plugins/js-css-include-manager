@@ -3,9 +3,9 @@
 Plugin Name: Js Css Include Manager
 Description: This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
 Plugin URI: http://wordpress.org/extend/plugins/js-css-include-manager/
-Version: 1.4
+Version: 1.4.1
 Author: gqevu6bsiz
-Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_4
+Author URI: http://gqevu6bsiz.chicappa.jp/?utm_source=use_plugin&utm_medium=list&utm_content=jcim&utm_campaign=1_4_1
 Text Domain: jcim
 Domain Path: /languages
 */
@@ -33,7 +33,7 @@ if ( !class_exists( 'JS_CSS_include_manager' ) ) :
 class JS_CSS_include_manager
 {
 
-	var	$Ver = '1.4';
+	var	$Ver = '1.4.1';
 
 	var $Plugin = array();
 	var $Current = array();

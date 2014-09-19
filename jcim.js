@@ -8,12 +8,14 @@ jQuery(document).ready(function($) {
 		if( $('.jcim').hasClass('full-width') ) {
 			$.post(ajaxurl, {
 				'action': Action,
-				'f': 1,
+				'jcim_field_donate': jcim_donate.jcim_field_donate,
+				'f': 1
 			});
 		} else {
 			$.post(ajaxurl, {
 				'action': Action,
-				'f': 0,
+				'jcim_field_donate': jcim_donate.jcim_field_donate,
+				'f': 0
 			});
 		}
 		

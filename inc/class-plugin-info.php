@@ -44,9 +44,11 @@ class Jcim_Plugin_Info
 
 			} else {
 
-				add_action( 'wp_ajax_jcim_donation_toggle' , array( $this , 'wp_ajax_donation_toggle' ) );
+				add_action( 'wp_ajax_' . $Jcim->Plugin['ltd'] . '_donation_toggle' , array( $this , 'ajax_donation_toggle' ) );
 
 			}
+
+			add_action( 'admin_print_scripts' , array( $this , 'admin_print_scripts' ) );
 
 		}
 
@@ -99,12 +101,30 @@ class Jcim_Plugin_Info
 		
 	}
 
-	function wp_ajax_donation_toggle() {
+	function admin_print_scripts() {
+		
+		global $Jcim;
+		
+		if( $Jcim->ClassManager->is_settings_page() ) {
+			
+			$translation = array( $this->nonces['field'] => wp_create_nonce( $this->nonces['value'] ) );
+			wp_localize_script( $Jcim->Plugin['page_slug'] , $Jcim->Plugin['ltd'] . '_donate' , $translation );
+
+		}
+
+	}
+
+	function ajax_donation_toggle() {
 		
 		if( isset( $_POST['f'] ) ) {
 
-			$val = intval( $_POST['f'] );
-			$this->update_donate_toggle( $val );
+			$is_donated = $this->is_donated();
+
+			if( !empty( $is_donated ) ) {
+
+				$this->update_donate_toggle( intval( $_POST['f'] ) );
+			
+			}
 
 		}
 		
@@ -114,8 +134,6 @@ class Jcim_Plugin_Info
 
 	function is_donated() {
 		
-		global $Jcim;
-
 		$donated = false;
 		$donateKey = $this->get_donate_key( $this->DonateRecord );
 
@@ -175,8 +193,6 @@ class Jcim_Plugin_Info
 
 	function author_url( $args ) {
 		
-		global $Jcim;
-
 		$url = 'http://gqevu6bsiz.chicappa.jp/';
 		
 		if( !empty( $args['translate'] ) ) {
@@ -261,9 +277,13 @@ class Jcim_Plugin_Info
 		global $Jcim;
 
 		if( $Jcim->Current['multisite'] ) {
+
 			$donateKey = get_site_option( $record );
+
 		} else {
+
 			$donateKey = get_option( $record );
+
 		}
 		
 		return $donateKey;
@@ -276,9 +296,13 @@ class Jcim_Plugin_Info
 		
 		$width = false;
 		if( $Jcim->Current['multisite'] ) {
+
 			$GetData = get_site_option( $this->DonateOptionRecord );
+
 		} else {
+
 			$GetData = get_option( $this->DonateOptionRecord );
+
 		}
 
 		if( !empty( $GetData ) ) {
@@ -295,7 +319,7 @@ class Jcim_Plugin_Info
 		
 		$RecordField = false;
 		
-		if( !empty( $_POST ) && !empty( $Jcim->ClassManager ) && !empty( $_POST[$Jcim->Plugin['form']['field']] ) && $_POST[$Jcim->Plugin['form']['field']] == $Jcim->Plugin['UPFN'] ) {
+		if( !empty( $_POST ) && !empty( $Jcim->ClassManager->is_manager ) && !empty( $_POST[$Jcim->Plugin['form']['field']] ) && $_POST[$Jcim->Plugin['form']['field']] == $Jcim->Plugin['UPFN'] ) {
 
 			if( !empty( $_POST[$this->nonces['field']] ) && check_admin_referer( $this->nonces['value'] , $this->nonces['field'] ) ) {
 					
@@ -342,7 +366,7 @@ class Jcim_Plugin_Info
 		
 		global $Jcim;
 
-		if( $Jcim->ClassManager->is_manager ) {
+		if( $Jcim->ClassManager->is_manager && check_ajax_referer( $this->nonces['value'] , $this->nonces['field'] ) ) {
 
 			if( $Jcim->Current['multisite'] ) {
 						

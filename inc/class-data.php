@@ -155,7 +155,7 @@ class Jcim_Data
 		
 		$RecordField = false;
 		
-		if( !empty( $_POST ) && !empty( $Jcim->ClassManager ) && !empty( $_POST[$Jcim->Plugin['form']['field']] ) && $_POST[$Jcim->Plugin['form']['field']] == $Jcim->Plugin['UPFN']  ) {
+		if( !empty( $_POST ) && !empty( $Jcim->ClassManager->is_manager ) && !empty( $_POST[$Jcim->Plugin['form']['field']] ) && $_POST[$Jcim->Plugin['form']['field']] == $Jcim->Plugin['UPFN']  ) {
 
 			if( !empty( $_POST['record_field'] ) ) {
 				

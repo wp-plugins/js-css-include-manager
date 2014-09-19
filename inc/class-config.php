@@ -28,8 +28,8 @@ class Jcim_Config
 		$Jcim->Plugin['url']          = plugin_dir_url( dirname( __FILE__ ) );
 		$Jcim->Plugin['ltd']          = 'jcim';
 		$Jcim->Plugin['nonces']       = array( 'field' => $Jcim->Plugin['ltd'] . '_field' , 'value' => $Jcim->Plugin['ltd'] . '_value' );
-		$Jcim->Plugin['form']         = array( 'field' => $Jcim->Plugin['ltd'] . '_settings' );
 		$Jcim->Plugin['UPFN']         = 'Y';
+		$Jcim->Plugin['form']         = array( 'field' => $Jcim->Plugin['ltd'] . '_settings' );
 		$Jcim->Plugin['msg_notice']   = $Jcim->Plugin['ltd'] . '_msg';
 		$Jcim->Plugin['default_role'] = array( 'child' => 'manage_options' , 'network' => 'manage_network' );
 
@@ -89,10 +89,14 @@ class Jcim_Config
 
 		$User = wp_get_current_user();
 		if( !empty( $User->roles ) ) {
+
 			foreach( $User->roles as $role ) {
+
 				$Jcim->Current['user_role'] = $role;
 				break;
+
 			}
+
 		}
 
 		$Jcim->Current['superadmin']    = false;

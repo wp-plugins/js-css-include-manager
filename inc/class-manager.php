@@ -9,9 +9,12 @@ class Jcim_Manager
 	
 	function __construct() {
 		
-		if( is_admin() )
+		if( is_admin() ) {
+
 			add_action( 'init' , array( $this , 'set_manager' ) , 20 );
 			add_action( 'init' , array( $this , 'init' ) , 20 );
+			
+		}
 		
 	}
 
@@ -51,31 +54,33 @@ class Jcim_Manager
 		
 		global $Jcim;
 		
-		if( $Jcim->Current['admin'] && $this->is_manager && !$Jcim->Current['ajax'] ) {
+		if( $Jcim->Current['admin'] && $this->is_manager ) {
 			
-			$base_plugin = trailingslashit( $Jcim->Plugin['plugin_slug'] ) . $Jcim->Plugin['plugin_slug'] . '.php';
-			
-			if( $Jcim->Current['multisite'] ) {
+			if( !$Jcim->Current['ajax'] ) {
 
-				add_filter( 'network_admin_plugin_action_links_' . $base_plugin , array( $this , 'plugin_action_links' ) );
-				add_action( 'network_admin_menu' , array( $this , 'admin_menu' ) );
-				add_action( 'network_admin_notices' , array( $this , 'update_notice' ) );
+				$base_plugin = trailingslashit( $Jcim->Plugin['plugin_slug'] ) . $Jcim->Plugin['plugin_slug'] . '.php';
+				
+				if( $Jcim->Current['multisite'] ) {
+	
+					add_filter( 'network_admin_plugin_action_links_' . $base_plugin , array( $this , 'plugin_action_links' ) );
+					add_action( 'network_admin_menu' , array( $this , 'admin_menu' ) );
+					add_action( 'network_admin_notices' , array( $this , 'update_notice' ) );
+	
+				} else {
+	
+					add_filter( 'plugin_action_links_' . $base_plugin , array( $this , 'plugin_action_links' ) );
+					add_action( 'admin_menu' , array( $this , 'admin_menu' ) );
+					add_action( 'admin_notices' , array( $this , 'update_notice' ) );
+	
+				}
+				
+				add_action( 'admin_print_scripts' , array( $this , 'admin_print_scripts' ) );
 
 			} else {
-
-				add_filter( 'plugin_action_links_' . $base_plugin , array( $this , 'plugin_action_links' ) );
-				add_action( 'admin_menu' , array( $this , 'admin_menu' ) );
-				add_action( 'admin_notices' , array( $this , 'update_notice' ) );
+				
+				add_action( 'wp_ajax_' . $Jcim->Plugin['ltd'] . '_get_load_header' , array( $this , $Jcim->Plugin['ltd'] . '_get_load_header' ) );
 
 			}
-			
-			add_action( 'admin_print_scripts' , array( $this , 'admin_print_scripts' ) );
-
-		}
-		
-		if( $Jcim->Current['admin'] && $this->is_manager && $Jcim->Current['ajax'] ) {
-			
-			add_action( 'wp_ajax_' . $Jcim->Plugin['ltd'] . '_get_load_header' , array( $this , $Jcim->Plugin['ltd'] . '_get_load_header' ) );
 			
 		}
 		
@@ -129,7 +134,6 @@ class Jcim_Manager
 
 	function admin_print_scripts() {
 		
-		global $plugin_page;
 		global $wp_version;
 		global $Jcim;
 		
