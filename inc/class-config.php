@@ -88,9 +88,12 @@ class Jcim_Config
 		$Jcim->Current['user_role']     = false;
 
 		$User = wp_get_current_user();
+
 		if( !empty( $User->roles ) ) {
 
-			foreach( $User->roles as $role ) {
+			$current_roles = $User->roles;
+
+			foreach( $current_roles as $role ) {
 
 				$Jcim->Current['user_role'] = $role;
 				break;
