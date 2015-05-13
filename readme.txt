@@ -4,7 +4,7 @@ Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm
 Tags: js, javascript, css, include, manage, admin, front, site
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPL2
 
 This plug-in is a will clean the file management. You can only manage the screen. You can also only site the screen.
