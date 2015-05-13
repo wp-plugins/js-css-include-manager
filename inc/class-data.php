@@ -281,7 +281,7 @@ class Jcim_Data
 
 		}
 
-		wp_redirect( add_query_arg( $Jcim->Plugin['msg_notice'] , 'delete' ) . '#update' );
+		wp_redirect( esc_url_raw( add_query_arg( $Jcim->Plugin['msg_notice'] , 'delete' ) . '#update' ) );
 		exit;
 
 	}
@@ -313,7 +313,7 @@ class Jcim_Data
 
 		}
 
-		wp_redirect( add_query_arg( $Jcim->Plugin['msg_notice'] , 'update' ) . '#update' );
+		wp_redirect( esc_url_raw( add_query_arg( $Jcim->Plugin['msg_notice'] , 'update' ) . '#update' ) );
 		exit;
 
 	}
@@ -348,7 +348,7 @@ class Jcim_Data
 
 		}
 
-		wp_redirect( add_query_arg( $Jcim->Plugin['msg_notice'] , 'update' ) . '#update' );
+		wp_redirect( esc_url_raw( add_query_arg( $Jcim->Plugin['msg_notice'] , 'update' ) . '#update' ) );
 		exit;
 
 	}
@@ -385,7 +385,7 @@ class Jcim_Data
 
 		}
 
-		wp_redirect( add_query_arg( $Jcim->Plugin['msg_notice'] , 'update' ) );
+		wp_redirect( esc_url_raw( add_query_arg( $Jcim->Plugin['msg_notice'] , 'update' ) ) );
 		exit;
 
 	}

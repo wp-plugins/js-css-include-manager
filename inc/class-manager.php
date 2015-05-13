@@ -144,8 +144,6 @@ class Jcim_Manager
 			add_thickbox();
 			
 			wp_enqueue_style( $Jcim->Plugin['page_slug'] , $Jcim->Plugin['url'] . $Jcim->Plugin['ltd'] . '.css', array() , $Jcim->Ver );
-			if( version_compare( $wp_version , '3.8' , '<' ) )
-				wp_enqueue_style( $Jcim->Plugin['page_slug'] . '-37' , $Jcim->Plugin['url'] . $Jcim->Plugin['ltd'] . '-3.7.css', array() , $Jcim->Ver );
 
 			$translation = array( 'msg' => array( 'delete_confirm' => __( 'Confirm Deletion' ) ) );
 			wp_localize_script( $Jcim->Plugin['page_slug'] , $Jcim->Plugin['ltd'] , $translation );
@@ -187,7 +185,7 @@ class Jcim_Manager
 		
 		global $Jcim;
 		
-		$url = remove_query_arg( array( $Jcim->Plugin['msg_notice'] , 'donated' ) );
+		$url = esc_url( remove_query_arg( array( $Jcim->Plugin['msg_notice'] , 'donated' ) ) );
 		
 		return $url;
 

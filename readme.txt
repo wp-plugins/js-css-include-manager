@@ -1,9 +1,9 @@
 === Js Css Include Manager ===
 Contributors: gqevu6bsiz
-Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_4_2
+Donate link: http://gqevu6bsiz.chicappa.jp/please-donation/?utm_source=wporg&utm_medium=donate&utm_content=jcim&utm_campaign=1_4_3
 Tags: js, javascript, css, include, manage, admin, front, site
-Requires at least: 3.6.1
-Tested up to: 4.1
+Requires at least: 3.8
+Tested up to: 4.2.2
 Stable tag: 1.4.2
 License: GPL2
 
@@ -63,6 +63,9 @@ function my_conditions( ) {
 3. Conditions after added of settins interface
 
 == Changelog ==
+
+= 1.4.3 =
+* Security enhancement: Escape to add_query_arg/remove_query_arg.
 
 = 1.4.2 =
 * Fixed: Get the current user group.
